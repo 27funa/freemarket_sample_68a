@@ -1,3 +1,30 @@
 * {
   box-sizing: border-box;
 }
+
+.exhibition {
+  text-decoration: none;
+}
+
+.exhibitionBtn {
+  width: 120px;
+  background-color: #3ccacc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 16px;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  &__text {
+    font-size: 18px;
+    display: block;
+    color: #fff;
+  }
+  &__icon {
+    width: 60%;
+  }
+}
+
+.exhibitionBtn:hover {
+  opacity: 0.9;
+}
