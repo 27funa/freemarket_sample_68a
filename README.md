@@ -24,8 +24,11 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|email|string|-------|
+|introduction|text|-------|
 |image|string|-------|
+
+### Association
+- belongs_to :user
 
 ## user_ informationsテーブル（本人情報）
 
@@ -35,12 +38,15 @@
 |first_name|string|nul:false|
 |family_name_kana|string|nul:false|
 |birth|date|nul:false|
-|postal code|integer|-------|
+|postal_code|integer|-------|
 |state|string|-------|
 |city|string|-------|
 |address_line_1|string|-------|
 |address_line_2|string|-------|
 
+### Association
+- belongs_to :user
+
 ## delivery_ informationsテーブル（配送情報）
 
 |Column|Type|Options|
@@ -48,38 +54,15 @@
 |family_name|string|nul:false|
 |first_name|string|nul:false|
 |family_name_kana|string|nul:false|
-|postal code|integer|nul:false|
+|postal_code|integer|nul:false|
 |state|string|nul:false|
 |city|string|nul:false|
 |address_line_1|string|nul:false|
 |address_line_2|string|nul:false|
 |tel|string|nul:false|
-## delivery_ informationsテーブル（配送情報）
 
-|Column|Type|Options|
-|------|----|-------|
-|family_name|string|nul:false|
-|first_name|string|nul:false|
-|family_name_kana|string|nul:false|
-|postal code|integer|nul:false|
-|state|string|nul:false|
-|city|string|nul:false|
-|address_line_1|string|nul:false|
-|address_line_2|string|nul:false|
-|tel|string|nul:false|
-## delivery_ informationsテーブル（配送情報）
-
-|Column|Type|Options|
-|------|----|-------|
-|family_name|string|nul:false|
-|first_name|string|nul:false|
-|family_name_kana|string|nul:false|
-|postal code|integer|nul:false|
-|state|string|nul:false|
-|city|string|nul:false|
-|address_line_1|string|nul:false|
-|address_line_2|string|nul:false|
-|tel|string|nul:false|
+### Association
+- belongs_to :user
 
 ## creditsテーブル（カード情報）
 
@@ -89,18 +72,21 @@
 |expiration|date|nul:false|
 |security_code|integer|nul:false|
 
+### Association
+- belongs_to :user
+
 ## reviewsテーブル（いいね）
 
 |Column|Type|Options|
 |------|----|-------|
 |assessment|string|null: false|
 |comment|text|-------|
-|users_id|integer|null: false, foreign_key: true|
-|items_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_one :item
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 
 ## itemsテーブル（商品）
 
@@ -116,14 +102,14 @@
 |shipping_area|string|nul:false|
 |arrival_days|string|nul:false|
 |postage_payment|string|nul:false|
-|users_id|integer|nul:false, foreign_key: true|
-|items_images_id|integer|nul:false, foreign_key: true|
-|categories_id|integer|nul:false, foreign_key: true|
+|items_image_id|integer|nul:false, foreign_key: true|
+|category_id|integer|nul:false, foreign_key: true|
 
 ### Association
+- has_one :review
 - has_many :item_images
-- belongs_to :users
-- belongs_to :item_categories
+- belongs_to :user
+- belongs_to :item_category
 
 ## items_imagesテーブル（商品画像）
 
@@ -135,16 +121,16 @@
 |image_4|string|-------|
 |image_5|string|-------|
 |image_6|string|-------|
-|items_id|integer|null:false|
+|item_id|integer|null:false|
 
 ### Association
-- belongs_to :items
+- belongs_to :item
 
 ## items_categoriesテーブル（中間テーブル）
 
 |Column|Type|Options|
 |------|----|-------|
-|items_id|integer|null: false|
+|item_id|integer|null: false|
 |categories_id|integer|null:false|
 
 ### Association
@@ -160,28 +146,28 @@
 |kids|string|-------|
 
 ### Association
-- belongs_to :items_categories
+- belongs_to :items_category
 
 ## postsテーブル（出品）
 
 |Column|Type|Options|
 |------|----|-------|
 |posts_status|integer|-------|
-|users_id|integer|nul:false, foreign_key: true|
-|items_id|integer|nul:false, foreign_key: true|
+|user_id|integer|nul:false, foreign_key: true|
+|item_id|integer|nul:false, foreign_key: true|
 
 ### Association
 - has_one :item
-- belongs_to :items_categories
+- belongs_to :items_category
 
 ## cartsテーブル（カート）
 
 |Column|Type|Options|
 |------|----|-------|
 |carts_status|integer|-------|
-|users_id|integer|nul:false, foreign_key: true|
-|items_id|integer|nul:false, foreign_key: true|
+|user_id|integer|nul:false, foreign_key: true|
+|item_id|integer|nul:false, foreign_key: true|
 
 ### Association
 - has_one :item
-- belongs_to :items_categories
+- belongs_to :items_category
