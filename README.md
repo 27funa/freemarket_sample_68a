@@ -9,8 +9,16 @@
 |password|string|null: false, unique:true|
 
 ### Association
-- has_one :profiles, user_ informations, delivery_ informations, credits
-- has_many :items, reviews, posts, sold_lists, buy_trading_lists, bought_lists
+- has_one :profile
+- has_one :user_ information
+- has_one :delivery_ information
+- has_one :credit
+- has_many :items
+- has_many :reviews
+- has_many :posts
+- has_many :sold_lists
+- has_many :buy_trading_lists
+- has_many :bought_lists
 
 ## profilesテーブル（プロフィール）
 
@@ -91,7 +99,7 @@
 |items_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_one :items
+- has_one :item
 - belongs_to :users
 
 ## itemsテーブル（商品）
@@ -114,7 +122,8 @@
 
 ### Association
 - has_many :item_images
-- belongs_to :users, item_categories
+- belongs_to :users
+- belongs_to :item_categories
 
 ## items_imagesテーブル（商品画像）
 
@@ -139,7 +148,8 @@
 |categories_id|integer|null:false|
 
 ### Association
-- has_many :items, categories
+- has_many :items
+- has_many :categories
 
 ## categoriesテーブル（カテゴリー）
 
@@ -161,7 +171,7 @@
 |items_id|integer|nul:false, foreign_key: true|
 
 ### Association
-- has_one :items
+- has_one :item
 - belongs_to :items_categories
 
 ## cartsテーブル（カート）
@@ -173,5 +183,5 @@
 |items_id|integer|nul:false, foreign_key: true|
 
 ### Association
-- has_one :items
+- has_one :item
 - belongs_to :items_categories
