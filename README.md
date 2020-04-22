@@ -27,6 +27,7 @@
 |------|----|-------|
 |introduction|text|-------|
 |image|string|-------|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -44,6 +45,7 @@
 |city|string|-------|
 |address_line_1|string|-------|
 |address_line_2|string|-------|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -61,6 +63,7 @@
 |address_line_1|string|nul:false|
 |address_line_2|string|nul:false|
 |tel|string|nul:false|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -72,6 +75,7 @@
 |card_num|integer|nul:false|
 |expiration|date|nul:false|
 |security_code|integer|nul:false|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -105,6 +109,7 @@
 |postage_payment|string|nul:false|
 |items_image_id|integer|nul:false, foreign_key: true|
 |category_id|integer|nul:false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_one :review, dependent: :delete
@@ -112,20 +117,15 @@
 - belongs_to :user
 - belongs_to :item_category
 
-## items_imagesテーブル（商品画像）
+## item_imagesテーブル（商品画像）
 
 |Column|Type|Options|
 |------|----|-------|
-|image_1|string|null: false|
-|image_2|string|-------|
-|image_3|string|-------|
-|image_4|string|-------|
-|image_5|string|-------|
-|image_6|string|-------|
+|image|string|null: false|
 |item_id|integer|null:false|
 
 ### Association
-- belongs_to :item
+- belongs_to :items
 
 ## items_categoriesテーブル（中間テーブル）
 
@@ -142,9 +142,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|mens|string|-------|
-|ladies|string|-------|
-|kids|string|-------|
+|name|string|-------|
 
 ### Association
 - belongs_to :items_category
