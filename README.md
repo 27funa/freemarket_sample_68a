@@ -114,8 +114,8 @@
 ### Association
 - has_one :review, dependent: :delete
 - has_many :item_images, dependent: :delete_all
+- has_many :categories
 - belongs_to :user
-- belongs_to :item_category
 
 ## item_imagesテーブル（商品画像）
 
@@ -125,18 +125,7 @@
 |item_id|integer|null:false|
 
 ### Association
-- belongs_to :items
-
-## items_categoriesテーブル（中間テーブル）
-
-|Column|Type|Options|
-|------|----|-------|
-|item_id|integer|null: false|
-|categories_id|integer|null:false|
-
-### Association
-- has_many :items
-- has_many :categories
+- belongs_to :item
 
 ## categoriesテーブル（カテゴリー）
 
@@ -145,7 +134,7 @@
 |name|string|-------|
 
 ### Association
-- belongs_to :items_category
+- belongs_to :item
 
 ## postsテーブル（出品）
 
