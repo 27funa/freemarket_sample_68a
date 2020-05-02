@@ -1,0 +1,15 @@
+=render "posts/header"
+.main-content
+  -# 左メニュ
+  = render "menu"
+  -# 右側
+  .account-right-content
+    .account-box
+      .account-image
+      .account-nickname
+        テスト
+      .account-exhibition
+        出品数　20
+    .account-text-display
+      %p こんにちわ。洋服を中心に出品しています！
+=render "posts/footer"
