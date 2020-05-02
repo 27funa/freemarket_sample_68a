@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'delivery_/informations'
   root 'posts#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :accounts, only: :index
+  resources :profiles, only: :index
+  resources :user_informations, only: :index
+  resources :delivery_informations, only: :index
+
 end
