@@ -57,7 +57,7 @@ a {
   background-color:#fff;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
   .account-box {
-    background-image: url( "p_pt_0011_m_pt_00110.jpg");
+    background-image: image-url( "p_pt_0011_m_pt_00110.jpg");
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -65,7 +65,7 @@ a {
     padding-top:50px;
     text-align: center;
     .account-image {
-      background-image: url("member_photo_noimage_thumb.png");
+      background-image: image-url("member_photo_noimage_thumb.png");
       background-size: cover;
       margin:0 auto;
       width:60px;
