@@ -1,15 +1,16 @@
 =render "posts/header"
-.main-content
+.mypage
   -# 左メニュ
   = render "menu"
   -# 右側
-  .account-right-content
-    .account-box
-      .account-image
-      .account-nickname
+  .mypage__right
+    .mypage__right__box
+      .mypage__right__box__image
+      .mypage__right__box__nickname
         テスト
-      .account-exhibition
+      .mypage__right__box__exhibition
         出品数　20
-    .account-text-display
+    .mypage__right__box__text
       %p こんにちわ。洋服を中心に出品しています！
+=render "posts/app-banner"
 =render "posts/footer"

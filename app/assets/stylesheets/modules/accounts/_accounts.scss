@@ -1,28 +1,30 @@
-
 body{
   font-family: Source Sans Pro, Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
 }
 
-a {
-  text-decoration: none;
-}
 
-.main-content {
+// メイン---------------------------------------------------
+.mypage {
   background-color: #f5f5f5;
-  width: 100vw;
-  height: 1000px;
   display:flex;
 
+  a {
+    text-decoration: none;
+  }
+  a {
+    color: black;
+  }
+
 // 左メニューバー --------------------------------------------
-  .left-content {
+  .leftmenu {
     padding-top: 100px;
     margin-left: 250px;
     width: 250px;
-    .left-menu {
+    &__ul {
       background-color:#fff;
       box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
       width:250px;
-      .left-each-menu {
+      &__li {
         padding:0 10px;
         line-height: 50px;
         border-bottom:solid;
@@ -36,27 +38,23 @@ a {
           }
         }
       }
+      &__li:hover {
+        background-color:#d3d3d3;
+      }
     }
   }
 }
 
-.left-each-menu:hover{
-  background-color:#d3d3d3;
-}
-
-a {
-  color: black;
-}
 
 // アカウント表示-------------------------------------------
-.account-right-content {
-  margin-top: 100px;
-  margin-left: 100px;
+.mypage__right {
+  margin: 100px 0 200px 100px;
   width: 600px;
   height: 400px;
   background-color:#fff;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
-  .account-box {
+
+  &__box {
     background-image: image-url( "p_pt_0011_m_pt_00110.jpg");
     background-size: cover;
     background-position: center;
@@ -64,26 +62,29 @@ a {
     height: 200px;
     padding-top:50px;
     text-align: center;
-    .account-image {
+
+    &__image {
       background-image: image-url("member_photo_noimage_thumb.png");
       background-size: cover;
       margin:0 auto;
       width:60px;
       height: 60px;
     }
-    .account-nickname {
+
+    &__nickname {
       margin-top: 2px;
     }
-    .account-exhibition {
+
+    &__exhibition {
       margin-top: 6px;
     }
   }
-  .account-text-display {
+
+  .mypage__right__box__text {
     border: 1px solid;
     border-color: #d3d3d3;
     width: 500px;
     height: 160px;
     margin: 20px 50px;
   }
-
 }

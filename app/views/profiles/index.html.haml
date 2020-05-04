@@ -1,20 +1,21 @@
 =render "posts/header"
-.main-content
+.mypage
   -# 左メニュ-
   = render "accounts/menu"
   -# 右側
-  .profile-content
-    .profile-top
+  .profile
+    .profile__header
       プロフィール
-    .profile-box
-      .profile-box__image
-      .profile-box__nickname
+    .profile__box
+      .profile__box__img
+      .profile__box__nickname
         = form_with do |f|
-          =f.text_field :nickname, {class:"nickname-form"}
-    .profile-text
+          =f.text_field :nickname, {class:"profile__box__nickname__form"}
+    .profile__text
       -# あとでmodelを入れること
       = form_with do |f|
-        = f.text_field :introduction, {class: "profile-text-form",placeholder:"自己紹介文を書きましょう！"}
-        = f.submit "変更する", {class: "profile-text-button"}
+        = f.text_field :introduction, {class: "profile__text__form",placeholder:"自己紹介文を書きましょう！"}
+        = f.submit "変更する", {class: "profile__text__button"}
 
+=render "posts/app-banner"
 =render "posts/footer"
