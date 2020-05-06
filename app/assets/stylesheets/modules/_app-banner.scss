@@ -1,5 +1,5 @@
 .app-banner {
-  background-image: image-url( "bg-appBanner-pict.jpg");
+  background-image: url( "/assets/bg-appBanner-pict.jpg");
   background-size: cover;
   background-position: center;
   padding: 100px 40px;
@@ -27,7 +27,7 @@
           vertical-align: bottom;
         }
         img:hover {
-          opacity: 0.5;
+          opacity: ;
         }
       }
     }
