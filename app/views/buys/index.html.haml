@@ -1,0 +1,38 @@
+.buy
+  %header.header-logo
+    = render partial: 'posts/header'
+  .buy-main
+    .buy-container
+      %h2.buy-container__title 購入内容の確認
+
+      .buy-item
+        .buy-item__image
+          = image_tag 'sushi_aburi_toro.png', class: 'img'
+        .buy-item__details
+          .buy-item__details__title
+            %p product3
+          .buy-item__details__price
+            %p &yen;30000 (税込) 送料込み
+
+      .buy-content
+        .buy-content__price
+          .buy-content__price__amount
+            %h2 支払い金額
+            %h2 &#165;30000
+        .buy-content__payment
+          %h2  支払い方法
+          %a{href:"#"} 
+            %p
+              %i.fas.fa-cog.fa-spin
+              登録してください
+        .buy-content__address
+          %h2  配送先
+          %a{href:"#"} 
+            %p
+              %i.fas.fa-cog.fa-spin
+              登録してください
+        .buy-content__info
+          %input.buy-content__info__btn{:type => "submit", :value => "購入する"}
+
+  %footer
+    = render partial: 'posts/footer'

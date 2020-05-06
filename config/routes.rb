@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'buys/index'
   get 'delivery_/informations'
   root 'posts#index'
 
