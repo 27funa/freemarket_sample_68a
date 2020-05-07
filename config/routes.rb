@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
 
+  devise_for :users
+  get 'buys/index'
   get 'delivery_/informations'
   root 'posts#index'
 
