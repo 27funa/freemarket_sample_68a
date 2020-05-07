@@ -1,0 +1,93 @@
+.account-page{
+  text-align: center;
+  min-height: 100vh;
+
+  .account-page__header{
+    height: 150px;
+    p{
+      img{
+        padding-top: 44px; 
+        height: 100%;
+        margin-right: 30px;
+        width: 200px; /*後に修正*/ 
+
+      } 
+    }
+  }
+
+  .account-page__body{
+    background-color: #f8f8f8;
+    width: 670px;
+    margin: 0 auto;
+    margin-bottom: 150px;
+    padding: 60px;
+    text-shadow: 0px 0px 1px #ccc;
+    .no-account {
+      margin-bottom: 10px;
+      p{   
+        font-weight: normal;
+        color: slategrey;
+        font-size: 14px;
+      }
+      a{
+        background: #3CCACE;
+        border-radius: 4px;
+        color: #fff;
+        height: 44px;
+        width: 329px;
+        display: inline-block;
+        text-decoration: none;
+        line-height: 44px;
+        font-size: 16px;
+      }
+    }
+    form{
+      padding-top: 25px;
+    }
+    input{
+      padding: 0px 10px 0px;
+      width: 329px;
+      height: 44px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+
+    }
+    input#user_remember_me{
+      width: auto;
+      height: auto;
+
+    }
+
+    label{
+      height: auto;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+    h2{
+      display: block;
+      font-size: 26px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+      a{
+        text-decoration: none;
+        font-size: 14px;
+        color: #3CCACE;
+        font-weight: bold;
+      }
+    ::placeholder{
+      text-align: left;
+      font-size: 12px;
+    }
+    input.submit-btn{
+      font-size: 17px;
+      width: 180px;
+      cursor:pointer
+      
+    }
+  }
+}
