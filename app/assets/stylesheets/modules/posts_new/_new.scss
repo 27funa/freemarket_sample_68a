@@ -1,0 +1,631 @@
+@mixin block {
+  height: 20px;
+  width: 38px;
+  margin-left:15px;
+  font-size:12px;
+  background-color:red;
+  border-radius:5px;
+  padding: 2px 5px;
+  color:#fff;
+  display: inline-block;
+  font-style: normal;
+  line-height: 1.5em;
+  margin: 0;
+  margin-left: 8px;
+  font-weight: 600;
+  @include font;
+  color: $sub-color;
+  text-align: center;
+}
+
+@mixin font {
+  font-family: Source Sans Pro, Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
+
+@mixin border-style {
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  font: inherit;
+}
+
+$main-color: #EEEEEE;
+$sub-color: #ffffff;
+
+// ---全体の画面---
+.new__main {
+  background-color: $main-color;
+  min-height: 100vh;
+  overflow: scroll;
+  
+  &__upper {
+    background-color: $main-color;
+    height: 130px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__logo {
+      height: 50px;
+      width: 200px;
+      background-color: $main-color;
+      cursor: pointer;
+
+      img{
+        padding-top: 10px;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+    &__post {
+      height: 100%;
+      width: 750px;
+      background-color: $sub-color;
+      margin: 0 auto;
+
+      &__top {
+      height: 310px;
+      background-color: $sub-color;
+      margin: 0 auto;
+      border: solid 1px;
+      border-color: $sub-color;
+
+        &__content {
+          height: 230px;
+          vertical-align: baseline;
+          margin: 33px 38px 35px 38px;
+          @include border-style;
+
+          &__upper {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            
+            // 必須（まとめれる）
+            &__block {
+              @include block;
+            }
+          }
+
+
+          &__text {
+            height: 20px;
+            margin-top: 16px;
+            line-height: 1.5em;
+            font-size: 15px;
+            margin-bottom: 16px;
+          }
+
+          &__upload {
+            align-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            background-color: $main-color;
+            cursor: pointer;
+            display: flex;
+            height: 152px;
+            flex-wrap: wrap;
+            -webkit-box-pack: center;
+            justify-content: center;
+            position: relative;
+            border-width: 1px;
+            border-style: dashed;
+            border-color: #BBBBBB;
+            border-image: initial;
+            transition: all 0.5s ease-out 0s;
+
+            &__camera {
+              height: 20px;
+              width: 40px;
+              margin-bottom: 8px;
+              font-size: 1.3em;
+             
+              &__label {
+                cursor: pointer;
+              }
+              &__file {
+                display: none;
+              }
+            }
+
+            &__character {
+              font-size: 13px;
+              line-height: 1.5em;
+              text-align: center;
+              width: 100%;
+            }
+          }
+        }
+      &__second {
+        height: 410px;
+        background-color: $sub-color;
+        margin: 0 auto;
+        border: solid 1px;
+        border-color: $main-color;
+
+        &__content {
+          height: 370px;
+          vertical-align: baseline;
+          margin: 33px 38px 35px 38px;
+          @include border-style;
+
+          &__upper {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+
+            &__block {
+              @include block;
+            }
+          }
+          &__input-box {
+            width: 100%;
+          
+            input[type="text"] { 
+              width: 670px;
+              height: 48px;
+              margin-top: 16px;
+              padding: 0 16px 0 16px;           
+            }
+          }
+          
+          &__text {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__block {
+              @include block;
+            }
+          
+          }
+          &__area {
+            width: 100%;
+
+            textarea { 
+              width: 670px;
+              height: 160px;
+              padding: 15px 15px 15px 15px;
+              
+            }
+          }
+        }
+      }
+      &__third {
+        height: 430px;
+        background-color: $sub-color;
+        margin: 0 auto;
+        border: solid 1px;
+        border-color: $main-color;
+
+        &__content {
+          height: 370px;
+          vertical-align: baseline;
+          margin: 33px 38px 35px 38px;
+          @include border-style;
+
+          &__details {
+            height: 20px;
+            color: rgb(136, 136, 136);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5em;
+            margin-bottom: 24px;
+          }
+
+          &__category {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__block {
+              @include block;
+            }
+          }
+
+          &__select {
+            width: 100%;
+            
+            &__form {
+              width: 670px;
+              height: 48px;
+              background-color: $sub-color;
+            }
+          }
+          &__brand {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__block {
+              @include block;
+            }
+          
+          }
+          &__form {
+            width: 100%;
+
+            input[type="text"] { 
+              width: 670px;
+              height: 48px;
+              padding: 0 16px 0 16px;
+              
+            }
+          }
+          &__status {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__block {
+              @include block;
+            }
+          }
+          &__choice {
+            width: 100%;
+
+            &__form {
+              width: 670px;
+              height: 48px;
+              background-color: $sub-color;
+            }
+          }
+        }
+      }
+
+      &__fourth {
+        height: 430px;
+        background-color: $sub-color;
+        margin: 0 auto;
+        border: solid 1px;
+        border-color: $main-color;
+
+        &__content {
+          height: 370px;
+          vertical-align: baseline;
+          margin: 33px 38px 35px 38px;
+          @include border-style;
+
+          &__text {
+            display: flex;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5em;
+            margin-bottom: 24px;
+            color: rgb(136, 136, 136);
+            
+            &__help {
+              font-size: 13px;
+              font-weight: 600;
+              line-height: 1.5em;
+              margin-bottom: 24px;
+              cursor: pointer;
+              margin-top: 2px;
+
+              a {
+                text-decoration: none;
+                color: rgb(0, 149, 238);
+                margin-left: 5px;
+              }
+            
+          }
+        }
+          &__delivery {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__block {
+              @include block;
+            }
+          }
+
+          &__shipping-origin {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__block {
+              @include block;
+            }
+          }
+
+          &__choice {
+            width: 100%;
+
+            &__form {
+              width: 670px;
+              height: 48px;
+              background-color: $sub-color;
+            }
+          }
+
+          &__days {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__block {
+              @include block;
+            }
+          }
+          &__selection {
+            width: 100%;
+
+            &__form {
+              width: 670px;
+              height: 48px;
+              background-color: $sub-color;
+            }
+          }
+        }
+      }
+
+      &__fifth {
+        height: 230px;
+        background-color: $sub-color;
+        margin: 0 auto;
+        border: solid 1px;
+        border-color: $main-color;
+
+        &__content {
+          height: 170px;
+          vertical-align: baseline;
+          margin: 33px 38px 30px 38px;
+          @include border-style;
+
+          &__text {
+            display: flex;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5em;
+            margin-bottom: 30px;
+            color: rgb(136, 136, 136);
+
+            &__help {
+              font-size: 13px;
+              font-weight: 600;
+              line-height: 1.5em;
+              cursor: pointer;
+              margin-top: 2px;
+
+              a {
+                text-decoration: none;
+                color: rgb(0, 149, 238);
+                margin-left: 10px;
+              }
+            }
+          }
+
+          &__price {
+            display: flex;
+            height: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 50px;;
+            margin-bottom: 16px;
+            
+            &__block {
+              @include block;
+              margin-top: 15px;
+              margin-right: 260px;
+            }
+
+            &__dollar {
+              font-weight: 600;
+              font-size: 15px;
+              line-height: 1.5em;
+              margin-top: 15px;
+              margin-right: 10px;
+            }
+
+            &__input-box {
+              input[type="text"] { 
+                width: 285px;
+                height: 48px;
+                padding: 0 16px 0 16px;
+                text-align: right;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+              }
+            }
+          }
+
+          &__fee {
+            display: flex;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            color: rgb(136, 136, 136);
+          }
+        }
+      }
+
+      &__sixth {
+        height: 380px;
+        background-color: $sub-color;
+        margin: 0 auto;
+        border: solid 1px;
+        border-color: $main-color;
+
+        &__content {
+          height: 320px;
+          vertical-align: baseline;
+          margin: 33px 38px 30px 38px;
+          @include border-style;
+          
+          &__text {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5em;
+            margin-bottom: 30px;
+            color: rgb(136, 136, 136);
+          }
+
+          &__post {
+            height: 180px;
+            width: 360px;
+            margin: 40px auto 32px;
+
+            &__exhibition {
+              height: 50px;
+              width: 100%;
+
+              button {
+                height: 100%;
+                width: 100%;
+                font-size: 18px;
+                font-weight: 600;
+                background-color: #3CCACE;
+                padding: 0 15px 0 15px;
+                color: $sub-color;
+                @include font;
+                border-radius: 4px;
+                cursor: pointer;
+
+                &:hover {
+                  background-color: #91CCCF;
+                }
+              }
+            }
+
+            &__draft {
+              height: 50px;
+              width: 100%;
+              margin-top: 24px;
+
+              button {
+                height: 100%;
+                width: 100%;
+                font-size: 18px;
+                font-weight: 600;
+                background-color: #cccccc;
+                padding: 0 15px 0 15px;
+                color: #222;
+                @include font;
+                border-radius: 4px;
+                cursor: pointer;
+
+                &:hover {
+                  background-color: #AAAAAA;
+                }
+              }
+            }
+
+            &__return {
+              height: 20px;
+              width: 100%;
+              margin-top: 24px;
+              text-align: center;
+              
+              a {
+                font-size: 12;
+                color: rgb(0, 149, 238);
+                cursor: pointer;
+                text-decoration: none;
+              
+
+              }
+            }
+          }
+
+          &__note {
+            width: 100%;
+            height: 40px;
+            font-size: 12.5px;
+            @include font;
+
+            a {
+              color: #0095ee;
+              @include font;
+              text-decoration: none;
+              cursor: pointer;
+              word-break: keep-all;
+              
+            }
+          }
+        }
+      }
+    }
+  }
+  &__row {
+    height: 180px;
+    width: 100%;
+    text-align: center;
+    
+
+    &__text {
+      max-width: 100%;
+      margin: 0 auto;
+      padding-bottom: 20px;
+
+      ul {
+        list-style: none;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        padding-inline-start: 15px;
+      }
+     
+      li {
+        display: inline-block;
+       
+
+        a {
+          text-decoration: none;
+          color: #333333;
+          font-size: 14px;
+          margin-right: 15px;
+         
+        }
+      }
+
+    }
+      img{
+        padding-top: 10px;
+        height: 50px;
+        width: 160px;
+      }
+      
+  }
+  p {
+    font-size: 12px;
+  }
+}
