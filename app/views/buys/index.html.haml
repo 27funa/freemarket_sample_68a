@@ -1,6 +1,6 @@
 .buy
   %header.header-logo
-    = render partial: 'posts/header'
+    = render partial: 'part_template/header'
   .buy-main
     .buy-container
       %h2.buy-container__title 購入内容の確認
@@ -35,4 +35,4 @@
           %input.buy-content__info__btn{:type => "submit", :value => "購入する"}
 
   %footer
-    = render partial: 'posts/footer'
+    = render partial: 'part_template/footer'
