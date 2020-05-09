@@ -1,0 +1,197 @@
+.show{background-color: #f8f8f8;
+  padding-top: 20px;
+}
+.showpage{
+  background-color: white;
+  padding: 20px;
+    width: 800px;
+    margin: 20px auto 0;
+  .showpage__grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 30px;
+
+
+    &__left{
+
+    .show__title{
+      font-size: 2rem;
+      text-align: center;
+      padding: 30px 0;
+
+    }
+
+    .show__image{
+      height: 70%;
+      &__top{
+
+        image{width:100%;vertical-align: bottom;}
+
+
+
+      }
+
+      &__grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-auto-rows: 1fr;
+
+        image{width: 100%;vertical-align: bottom;}
+      }
+
+
+
+    }
+
+    .show__yen{
+      text-align: center;
+      font-size: 1.5rem;
+
+      .solle{
+        font-size:1.0rem;
+        color:grey;
+      }
+    }
+
+    .show__btn{
+      margin-top: 20px;
+      button{
+        cursor: pointer;
+        color: white;
+        width: 100%;
+        height: 40px;
+        border: none;
+        background-color: #30CDD1;
+        font-size: 1.2rem;
+      }
+
+    }
+
+  }
+
+  &__right{
+    
+
+    .show__table{
+      margin: 20px 0;
+
+      table{
+
+        .left{
+          padding: 20px;
+          text-align: center;
+          background-color: #F8f8f8;
+        }
+
+        .right{
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .show__likes{
+
+      button{
+      cursor: pointer;
+      color: white;
+      width: 100%;
+      height: 40px;
+      border: none;
+      background-color: #FEB340;
+      font-size: 1.2rem;
+      }
+    }
+
+  }
+
+  }
+}
+
+  .selfExhibition{
+    padding: 60px 0;
+    background-color: #f8f8f8;
+    h2{
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+
+    .selfsLists{
+      width: 780px;
+      margin: 26px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: 1fr 1fr;
+      grid-gap:20px;
+
+      .selfsList{
+
+      width: 100%;
+      display: inline-block;
+      float: left;
+
+      a{
+        background-color: #fff;
+        display:block;
+
+        .selfsList__image{
+
+ 
+          height: 150px;
+          position: relative;
+          overflow: hidden;
+          margin: 0;
+          z-index: auto;
+          img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            z-index: auto;
+            height: 150px;
+            object-fit: cover;
+          }
+
+
+        }
+        .selfsList__body{
+          background-color: white;
+          color: #333;
+          padding: 16px;
+
+          .name{
+            overflow: hidden;
+            line-height: 1.5;
+            font-size: 16px;
+            text-align: left;
+
+          }
+
+          .details{
+            font-size: 16px;
+            ul{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              li{
+
+              }
+            }
+            p{
+              font-size: 10px;
+    text-align: left;
+            }
+          }
+        }
+
+
+      }
+
+      }
+
+    }
+  }
