@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :profiles, only: :index
   resources :user_informations, only: :index
   resources :delivery_informations, only: :index
+  resources :osawas, only: :index
+
 
 end
