@@ -1,41 +1,41 @@
 .main-top
-  -# %sectoin.mainVisual
-  -#   .mainVisual__content
-  -#     %h2.mainVisual__content__subtitle 人生を変えるフリマアプリ
-  -#     %p.mainVisual__content__text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
-  -#     .mainVisual__content__badges
-  -#       %a{href:"#"}
-  -#         %img{ src: "/assets/download-on-the-app-store-apple.svg", alt: ""}
-  -#       %a{href:"#"}
-  -#         %img{ src: "/assets/google-play-badge.svg", alt: ""}
+  %sectoin.mainVisual
+    .mainVisual__content
+      %h2.mainVisual__content__subtitle 人生を変えるフリマアプリ
+      %p.mainVisual__content__text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
+      .mainVisual__content__badges
+        %a{href:"#"}
+          = image_tag 'download-on-the-app-store-apple.svg', alt: 'no image', class: 'img'
+        %a{href:"#"}
+          = image_tag 'google-play-badge.svg', alt: 'no image', class: 'img'
 
-  -# %section.mainIntro
-  -#   %h2.mainIntro__subtitle FURIMAが選ばれる3つの理由
-  -#   %ul.lists
-  -#     %li.list
-  -#       .list__pic
-  -#         %span.list__pic__number 1
-  -#         %img{ src: "/assets/pict-reason-01.jpg", alt: ""}
-  -#       %h3.list__text
-  -#         %span 3分 
-  -#         ですぐに出品
-  -#       %p.list__description スマホで入力するだけで簡単に出品できる！
-  -#     %li.list
-  -#       .list__pic
-  -#         %span.list__pic__number 2
-  -#         %img{ src: "/assets/pict-reason-02.jpg", alt: ""}
-  -#       %h3.list__text
-  -#         %span シンプル
-  -#         で使いやすい
-  -#       %p.list__description めんどくさい入力は必要なく、検索も購入もスムーズ！
-  -#     %li.list--last
-  -#       .list__pic
-  -#         %span.list__pic__number 3
-  -#         %img{ src: "/assets/pict-reason-03.jpg", alt: ""}
-  -#       %h3.list__text 
-  -#         手数料
-  -#         %span 業界最安
-  -#       %p.list__description 最大3%でお得に出品&購入！
+  %section.mainIntro
+    %h2.mainIntro__subtitle FURIMAが選ばれる3つの理由
+    %ul.lists
+      %li.list
+        .list__pic
+          %span.list__pic__number 1
+          = image_tag 'pict-reason-01.jpg', alt: 'no image', class: 'img'
+        %h3.list__text
+          %span 3分 
+          ですぐに出品
+        %p.list__description スマホで入力するだけで簡単に出品できる！
+      %li.list
+        .list__pic
+          %span.list__pic__number 2
+          = image_tag 'pict-reason-02.jpg', alt: 'no image', class: 'img'
+        %h3.list__text
+          %span シンプル
+          で使いやすい
+        %p.list__description めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.list--last
+        .list__pic
+          %span.list__pic__number 3
+          = image_tag 'pict-reason-03.jpg', alt: 'no image', class: 'img'
+        %h3.list__text 
+          手数料
+          %span 業界最安
+        %p.list__description 最大3%でお得に出品&購入！
 
   .mainMiddle
     .mainMiddle__content
@@ -43,26 +43,26 @@
       %p.mainMiddle__content__text FURIMAは、フリマアプリで最も人気。<br>出品・購入回数も業界最多です！<br>ほしかったあの商品に出会えるかもしれません。
       .mainMiddle__content__badges
         %a{href:"#"}
-          %img{ src: "/assets/download-on-the-app-store-apple.svg", alt: ""}
+          = image_tag 'download-on-the-app-store-apple.svg', alt: 'no image', class: 'img'
         %a{href:"#"}
-          %img{ src: "/assets/google-play-badge.svg", alt: ""}
+          = image_tag 'google-play-badge.svg', alt: 'no image', class: 'img'
 
   %section.mainKey
     %h2.mainKey__head FURIMAの特徴
     %ul.items
       %li.item
         %figure.item__img
-          %img{ src: "/assets/icon-01.png", alt: ""}
+          = image_tag 'icon-01.png', alt: 'no image', class: 'img'
         %h3.item__subtitle 簡単に売り買いできる
         %p.item__detail スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       %li.item
         %figure.item__img
-          %img{ src: "/assets/icon-03.png", alt: ""}
+          = image_tag 'icon-03.png', alt: 'no image', class: 'img'        
         %h3.item__subtitle 売上金は即日振込みに対応
         %p.item__detail 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       %li.item
         %figure.item__img
-          %img{ src: "/assets/icon-04.png", alt: ""}
+          = image_tag 'icon-04.png', alt: 'no image', class: 'img'        
         %h3.item__subtitle 様々な支払いに対応
         %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
@@ -74,9 +74,9 @@
           %h3.mainPickup__productBox__productHead__title 新規投稿商品
       .mainPickup__productBox__productLists
         .mainPickup__productBox__productLists__list
-          %a{href:"/products/3"} 
+          %a{href:"#"} 
             %figure.mainPickup__productBox__productLists__list__list--img
-              %img{ src: "/assets/sushi_aburi_toro.png", alt: ""}
+              = image_tag 'sushi_aburi_toro.png', alt: 'no image', class: 'img'        
             .mainPickup__productBox__productLists__list__body
               %h3.mainPickup__productBox__productLists__list__body__name product3
               .mainPickup__productBox__productLists__list__body__details
@@ -86,9 +86,9 @@
                     %i.fa.fa-star.likeIcon 0
                 %p (税込)
         .mainPickup__productBox__productLists__list
-          %a{href:"/products/2"} 
+          %a{href:"#"} 
             %figure.mainPickup__productBox__productLists__list__list--img
-              %img{ src: "/assets/sushi_kinmedai.png", alt: ""}
+              = image_tag 'sushi_kinmedai.png', alt: 'no image', class: 'img'        
             .mainPickup__productBox__productLists__list__body
               %h3.mainPickup__productBox__productLists__list__body__name product3
               .mainPickup__productBox__productLists__list__body__details
@@ -98,9 +98,9 @@
                     %i.fa.fa-star.likeIcon 0
                 %p (税込)
         .mainPickup__productBox__productLists__list
-          %a{href:"/products/1"} 
+          %a{href:"#"} 
             %figure.mainPickup__productBox__productLists__list__list--img
-              %img{ src: "/assets/sushi_hamburg_tare.png", alt: ""}
+              = image_tag 'sushi_hamburg_tare.png', alt: 'no image', class: 'img'        
             .mainPickup__productBox__productLists__list__body
               %h3.mainPickup__productBox__productLists__list__body__name product3
               .mainPickup__productBox__productLists__list__body__details
@@ -118,9 +118,9 @@
           %h3.mainPickup__productBox__productHead__title アーカイバ
       .mainPickup__productBox__productLists
         .mainPickup__productBox__productLists__list
-          %a{href:"/products/3"} 
+          %a{href:"#"} 
             %figure.mainPickup__productBox__productLists__list__list--img
-              %img{ src: "/assets/sushi_aburi_toro.png", alt: ""}
+              = image_tag 'sushi_aburi_toro.png', alt: 'no image', class: 'img'        
             .mainPickup__productBox__productLists__list__body
               %h3.mainPickup__productBox__productLists__list__body__name product3
               .mainPickup__productBox__productLists__list__body__details
@@ -130,9 +130,9 @@
                     %i.fa.fa-star.likeIcon 0
                 %p (税込)
         .mainPickup__productBox__productLists__list
-          %a{href:"/products/2"} 
+          %a{href:"#"} 
             %figure.mainPickup__productBox__productLists__list__list--img
-              %img{ src: "/assets/sushi_kinmedai.png", alt: ""}
+              = image_tag 'sushi_kinmedai.png', alt: 'no image', class: 'img'        
             .mainPickup__productBox__productLists__list__body
               %h3.mainPickup__productBox__productLists__list__body__name product3
               .mainPickup__productBox__productLists__list__body__details
@@ -142,9 +142,9 @@
                     %i.fa.fa-star.likeIcon 0
                 %p (税込)
         .mainPickup__productBox__productLists__list
-          %a{href:"/products/1"} 
+          %a{href:"#"} 
             %figure.mainPickup__productBox__productLists__list__list--img
-              %img{ src: "/assets/sushi_hamburg_tare.png", alt: ""}
+              = image_tag 'sushi_hamburg_tare.png', alt: 'no image', class: 'img'        
             .mainPickup__productBox__productLists__list__body
               %h3.mainPickup__productBox__productLists__list__body__name product3
               .mainPickup__productBox__productLists__list__body__details

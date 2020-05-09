@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin box-style {
+  font-size:16px;
+  padding-left:10px;
+  margin-top:5px;
+  width:300px;
+  height: 40px;
+  border-radius:5px;
+}
+
+@mixin birthday-box-style {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 40px;
+  padding-left: 30px;
+}
+
+.birth-box {
+  margin-top:10px;
+}
+
+// メイン --------------------------------------
+.user__info {
+  margin: 100px 0 150px 100px;
+  width: 600px;
+  background-color:#fff;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+
+// ヘッダー-----------------------------------
+  &__header {
+    text-align: center;
+    &__title {
+      height: 60px;
+      line-height: 60px;
+      font-size: 25px;
+      font-weight: bold;
+      border-bottom: solid;
+      border-bottom-color: #f5f5f5;
+    }
+    &__explanation {
+      font-size: 16px;
+      margin-top: 30px
+    }
+  }
+
+// 入力項目---------------------------------------
+  &__main {
+    margin:30px 100px 0 150px;
+    &__label {
+      display:flex;
+      &__name {
+        font-size:16px;
+      }
+      .required-mark {
+        margin-left:15px;
+        font-size:12px;
+        background-color:red;
+        border-radius:5px;
+        padding: 2px 5px;
+        color:#fff;
+      }
+      .any-mark {
+        margin-left:15px;
+        font-size:12px;
+        background-color:#d3d3d3;
+        border-radius:5px;
+        padding: 2px 5px;
+        color:#fff;
+      }
+      .postal-code-remark {
+        font-size:8px;
+        margin-left:10px;
+        padding-top:8px;
+      }
+    }
+    &__form {
+      .box-style {
+        @include box-style;
+      } 
+      .box-style {
+        @include box-style;
+      } 
+      .state-box-style{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        @include box-style;
+        position: absolute;
+      }
+      .angle-down-icon {
+        position: relative;
+        left:270px;
+        top:15px;
+        font-size: 20px;
+      }
+      &__button {
+        font-size:16px;
+        padding-left:10px;
+        margin:30px 0 30px;
+        width:300px;
+        height: 40px;
+        border-radius:5px;
+        background-color: #3CCACE;
+        }  
+    }
+      
+  }
+}
+
+// 誕生日入力クラス----------------------------
+.year {
+  @include birthday-box-style;
+}
+
+.month {
+  @include birthday-box-style;
+}
+
+.day {
+  @include birthday-box-style;
+}

@@ -1,0 +1,16 @@
+=render "posts/header"
+.mypage
+  -# 左メニュ
+  = render "menu"
+  -# 右側
+  .mypage__right
+    .mypage__right__box
+      .mypage__right__box__image
+      .mypage__right__box__nickname
+        テスト
+      .mypage__right__box__exhibition
+        出品数　20
+    .mypage__right__box__text
+      %p こんにちわ。洋服を中心に出品しています！
+=render "posts/app-banner"
+=render "posts/footer"
