@@ -14,7 +14,6 @@
       } 
     }
   }
-
   .account-page__body{
     background-color: #f8f8f8;
     width: 670px;
@@ -22,13 +21,17 @@
     margin-bottom: 150px;
     padding: 60px;
     text-shadow: 0px 0px 1px #ccc;
-    .no-account {
-      margin-bottom: 10px;
-      p{   
-        font-weight: normal;
-        color: slategrey;
-        font-size: 14px;
+    p{   
+      font-weight: normal;
+      color: slategrey;
+      font-size: 14px;
+    }
+    .no-account__link{
+      margin-bottom: 20px; 
+      :hover {
+        background-color: #91CCCF;
       }
+
       a{
         background: #3CCACE;
         border-radius: 4px;
@@ -54,18 +57,19 @@
       background: #fff;
       line-height: 1.5;
       font-size: 16px;
-
     }
     input#user_remember_me{
       width: auto;
       height: auto;
-
     }
 
     label{
       height: auto;
       font-size: 16px;
       vertical-align: middle;
+    }
+    .field-label__block{
+      @include block;
     }
     h2{
       display: block;
@@ -87,7 +91,14 @@
       font-size: 17px;
       width: 180px;
       cursor:pointer
-      
+    }      
+    .actions{
+      :hover {
+        background-color: #91CCCF;
+      }
+    }
+    p.field__text{   
+      font-size: 12px;
     }
   }
 }
