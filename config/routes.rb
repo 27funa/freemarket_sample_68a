@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'buys/index'
-  get 'delivery_/informations'
+  get 'logouts/index'
   root 'posts#index'
 
   resources :posts
