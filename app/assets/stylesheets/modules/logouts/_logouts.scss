@@ -1,0 +1,24 @@
+body{
+  font-family: Source Sans Pro, Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
+
+// アカウント表示-------------------------------------------
+.logout_page {
+  margin: 100px 0 200px 100px;
+  width: 600px;
+  height: 200px;
+  background-color:#fff;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+
+  &__button {
+    background-color: #3CCACE;
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    margin: 70px auto;
+  }
+  .logout_button {
+    color: #fff;
+    line-height: 60px;
+  }
+}

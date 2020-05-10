@@ -1,0 +1,11 @@
+=render "posts/header"
+.mypage
+  -# 左メニュ
+  = render "accounts/menu"
+  -# 右側
+  .logout_page
+    .logout_page__button
+      = link_to destroy_user_session_path, method: :delete,class: "logout_button" do
+        ログアウト
+=render "posts/app-banner"
+=render "posts/footer"
