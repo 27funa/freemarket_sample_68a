@@ -45,6 +45,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
 end
 
 
@@ -77,3 +78,5 @@ group :production do
 end
 
 gem 'devise'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
