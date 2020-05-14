@@ -1,34 +1,35 @@
-.header
-  .header__main
-    .header__main__logo
-      = link_to root_path do
-        = image_tag 'logo.png', class: ''
-    .header__main__search
-      %input#searchInput.searchBox--input{:name => "key", :placeholder => "キーワードから探す"}
-      %button{:type => "submit"}
-        = image_tag 'icon-search 1.png'
-  .header__navi
-    .header__navi--left
-      %ul
-        %li
-          =link_to "" do
-            カテゴリー
-        %li.brand
-          =link_to "" do
-            ブランド
+.main-header
+  .header
+    .header__main
+      .header__main__logo
+        = link_to root_path do
+          = image_tag 'logo.png', class: ''
+      .header__main__search
+        %input#searchInput.searchBox--input{:name => "key", :placeholder => "キーワードから探す"}
+        %button{:type => "submit"}
+          = image_tag 'icon-search 1.png'
+    .header__navi
+      .header__navi--left
+        %ul
+          %li
+            =link_to "" do
+              カテゴリー
+          %li.brand
+            =link_to "" do
+              ブランド
 
 
-    .header__navi--right
-      %ul
-        %li
-          =link_to new_user_session_path do
-            ログイン
-        %li
-          =link_to new_user_registration_path do
-            新規会員登録
-        %li
-          - if user_signed_in?
-            = link_to accounts_path do
-              マイページ
-          - else
-            　※未ログイン
+      .header__navi--right
+        %ul
+          %li
+            =link_to new_user_session_path do
+              ログイン
+          %li
+            =link_to new_user_registration_path do
+              新規会員登録
+          %li
+            - if user_signed_in?
+              = link_to accounts_path do
+                マイページ
+            - else
+              ※未ログイン
