@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :delivery_informations, only: :index
   resources :osawas, only: :index
 
-
+  resources :images,only: [:create]
 end
