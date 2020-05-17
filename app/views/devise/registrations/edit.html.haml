@@ -21,6 +21,9 @@
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+        -# パスワード入力必須の更新が必要な時のため、念のため残しておく--------------------------------------
+
         -# .field
         -#   = f.label :password, class: "label_name"
         -#   %br/

@@ -10,6 +10,9 @@
         プロフィール
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
+
+      -# profileコントロール次第で、下記コメントアウトに変更する可能性があるため残しておく------------------
+      
       -# -if @profile.persisted?
       -#   = link_to edit_profile_path(@profile.id), class: "menu-content" do
       -#     プロフィール

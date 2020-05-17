@@ -22,14 +22,14 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    unless @profile.present?
-      redirect_to new_profile_path
-    end
   end
 
   def update
-    @profile.update(profile_params)
-    render :edit
+    if  @profile.update(profile_params)
+      redirect_to profiles_path
+    else
+      render :edit
+    end
   end
 
   private
