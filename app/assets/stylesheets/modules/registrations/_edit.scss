@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin box-style {
+  font-size:16px;
+  padding-left:10px;
+  margin-top:5px;
+  width:300px;
+  height: 40px;
+  border-radius:5px;
+}
+
+// メイン --------------------------------------
+.account-edit {
+  margin: 100px 0 150px 0;
+  width: 600px;
+  background-color:#fff;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+
+// ヘッダー-----------------------------------
+  &__header {
+    text-align: center;
+    &__title {
+      height: 60px;
+      line-height: 60px;
+      font-size: 25px;
+      font-weight: bold;
+      border-bottom: solid;
+      border-bottom-color: #f5f5f5;
+    }
+    .field {
+      margin-top: 20px;
+      .label_name {
+        font-size: 16px;
+      }
+      i {
+        font-size: 14px;
+      }
+      .box-style {
+        @include box-style();
+      }
+    }
+    .actions_button {
+      font-size:16px;
+      padding-left:10px;
+      margin:30px 0 30px;
+      width:300px;
+      height: 40px;
+      border-radius:5px;
+      background-color: #3CCACE;
+    }
+    .actions_button_red {
+      font-size:16px;
+      padding-left:10px;
+      margin:5px 0 30px;
+      width:300px;
+      height: 40px;
+      border-radius:5px;
+      color: #fff;
+      background-color: red;
+    }
+
+  }
+}
