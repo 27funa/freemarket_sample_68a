@@ -1,15 +1,29 @@
 .leftmenu
   %ul.leftmenu__ul
     %li.leftmenu__ul__li
-      = link_to accounts_path, class: "menu-content" do
+      = link_to profiles_path, class: "menu-content" do
         マイページ
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
     %li.leftmenu__ul__li
-      = link_to profiles_path, class: "menu-content" do
+      = link_to new_profile_path, class: "menu-content" do
         プロフィール
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
+
+      -# profileコントロール次第で、下記コメントアウトに変更する可能性があるため残しておく------------------
+      
+      -# -if @profile.persisted?
+      -#   = link_to edit_profile_path(@profile.id), class: "menu-content" do
+      -#     プロフィール
+      -#     .angle-icon
+      -#       =icon("fa","angle-right",class:"angle-icon")
+      -# -else
+      -#   = link_to new_profile_path, class: "menu-content" do
+      -#     プロフィール
+      -#     .angle-icon
+      -#       =icon("fa","angle-right",class:"angle-icon")
+
     %li.leftmenu__ul__li
       = link_to user_informations_path, class: "menu-content" do
         本人情報
@@ -31,7 +45,13 @@
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
     %li.leftmenu__ul__li
+      = link_to edit_user_registration_path, class: "menu-content" do
+        ニックネーム・メール・パスワード
+        .angle-icon
+          =icon("fa","angle-right",class:"angle-icon")
+    %li.leftmenu__ul__li
       = link_to logouts_index_path, class: "menu-content" do
         ログアウト
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
+
