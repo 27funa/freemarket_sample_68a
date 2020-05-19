@@ -6,7 +6,7 @@
   .mypage__right
     .mypage__right__box
       .mypage__right__box__image
-        -if @profile.image.present?
+        -if @profile.present? && @profile.image.present?
           = image_tag @profile.image.url ,class:"profile_now_img"
         -else
           = image_tag 'member_photo_noimage_thumb.png', alt: 'No image', height: '60px', width: '60px'
