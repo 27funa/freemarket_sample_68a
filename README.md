@@ -71,8 +71,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|costomer_id|integer|nul:false|
-|card_id|integer|nul:false|
+|customer_id|string|nul:false|
+|card_id|string|nul:false|
 |user_id|refernces|null: false, foreign_key: true|
 
 ### Association

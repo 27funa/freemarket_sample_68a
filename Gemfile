@@ -77,3 +77,9 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'payjp'
+
+gem 'dotenv-rails'
+
+gem "jquery-rails"
