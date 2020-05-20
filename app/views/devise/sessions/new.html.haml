@@ -6,10 +6,9 @@
         = image_tag 'logo.png', class: ''
 
   .account-page__body
-    .no-account 
-      %p アカウントをお持ちでない方はこちら
+    %p アカウントをお持ちでない方はこちら
+    .no-account__link
       = link_to "新規会員登録", new_registration_path(resource_name)
-
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
         = f.label :メールアドレス

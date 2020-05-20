@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users,controllers: {
+    registrations: "users/registrations",
+    sessions: 'users/sessions',
+  }
+
   get 'buys/index'
-  get 'delivery_/informations'
+  get 'logouts/index'
   root 'posts#index'
 
-  resources :accounts, only: :index
-  resources :profiles, only: :index
-  resources :user_informations, only: :index
-  resources :delivery_informations, only: :index
-  resources :credits, only: [:index, :new, :create, :destroy]
+  resources :posts
+  resources :profiles
+  resources :user_informations
+  resources :delivery_informations
+  resources :osawas, only: :index
 
+  resources :images,only: [:create]
 end
