@@ -25,12 +25,12 @@
       -#       =icon("fa","angle-right",class:"angle-icon")
 
     %li.leftmenu__ul__li
-      = link_to user_informations_path, class: "menu-content" do
+      = link_to new_user_information_path, class: "menu-content" do
         本人情報
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
     %li.leftmenu__ul__li
-      = link_to delivery_informations_path, class: "menu-content" do
+      = link_to new_delivery_information_path, class: "menu-content" do
         発送先・お届け先住所
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
@@ -46,7 +46,7 @@
           =icon("fa","angle-right",class:"angle-icon")
     %li.leftmenu__ul__li
       = link_to edit_user_registration_path, class: "menu-content" do
-        ニックネーム・メール・パスワード
+        ニックネーム・メール
         .angle-icon
           =icon("fa","angle-right",class:"angle-icon")
     %li.leftmenu__ul__li

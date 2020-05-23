@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
     if  @profile.update(profile_params)
       redirect_to profiles_path
     else
-      render :edit
+      render "edit"
     end
   end
 
