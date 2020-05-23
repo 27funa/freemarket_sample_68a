@@ -20,7 +20,7 @@
             .new__main__post__top__content__upload__camera
               = f.fields_for :images do |c|
                 = c.label :image, class: "new__main__post__top__content__upload__camera__label" do
-                  = icon("fas fa-camera", class: `icon`)
+                  = icon("fas fa-camera", class: `icon`,id: "icon_camera")
                   = c.file_field :image,:multiple => true,name: "images[image][]",class: "new__main__post__top__content__upload__camera__file"
 
             .new__main__post__top__content__upload__character
