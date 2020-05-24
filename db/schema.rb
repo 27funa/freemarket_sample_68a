@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_032835) do
+ActiveRecord::Schema.define(version: 2020_05_23_082323) do
 
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -18,6 +18,23 @@ ActiveRecord::Schema.define(version: 2020_05_17_032835) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credits_on_user_id"
+  end
+
+  create_table "delivery_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "postal_code", null: false
+    t.string "state", null: false
+    t.string "city", null: false
+    t.string "address_line_1", null: false
+    t.string "address_line_2"
+    t.string "tel"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_delivery_informations_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,6 +71,23 @@ ActiveRecord::Schema.define(version: 2020_05_17_032835) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "user_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.date "birth", null: false
+    t.integer "postal_code", null: false
+    t.string "state", null: false
+    t.string "city", null: false
+    t.string "address_line_1", null: false
+    t.string "address_line_2"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_informations_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -69,5 +103,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_032835) do
   end
 
   add_foreign_key "credits", "users"
+  add_foreign_key "delivery_informations", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_informations", "users"
 end
