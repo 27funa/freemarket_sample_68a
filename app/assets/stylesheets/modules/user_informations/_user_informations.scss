@@ -79,18 +79,8 @@
       @include box-style;
       }
       .state-box-style{
-        // -webkit-appearance: none;
-        // -moz-appearance: none;
-        // appearance: none;
         @include box-style;
-        // position: absolute;
       }
-      // .angle-down-icon {
-      //   position: relative;
-      //   left:270px;
-      //   top:15px;
-      //   font-size: 20px;
-      // }
       .button {
         font-size:16px;
         padding-left:10px;
