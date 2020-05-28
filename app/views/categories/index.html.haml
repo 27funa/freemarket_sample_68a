@@ -1,0 +1,21 @@
+.category-main-header
+  = render 'posts/header'
+
+.category-head
+  .category-head__title
+    %h2 カテゴリー一覧
+  .category-head__parent
+    - @parents.each do |parent|
+      = link_to "#{parent.name}",categories_index_path(parent.id),class:"category-title",id:"#{parent.id}"
+
+
+.category-main-contents
+  .category-main-contents__list
+    - @parents.each do |parent|
+      = link_to "#{parent.name}",categories_index_path(parent.id), class: "parent-content",id:"#{parent.id}"
+      - parent.children.each do |child|
+        .child-categories
+          = link_to "#{child.name}",categories_index_path(child.id), class: "child-content",id:"#{child.id}"
+          .grand-categorise
+            - child.children.each do |grandchild|
+              =link_to "#{grandchild.name}",categories_index_path(grandchild.id), class: "grandchild-content",id:"#{grandchild.id}"

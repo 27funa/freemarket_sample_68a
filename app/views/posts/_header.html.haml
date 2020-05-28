@@ -11,9 +11,10 @@
     .header__navi
       .header__navi--left
         %ul
-          %li
-            =link_to "" do
+          %li.category
+            =link_to categories_index_path do
               カテゴリー
+            = render partial: 'categories/window'
           %li.brand
             =link_to "" do
               ブランド
