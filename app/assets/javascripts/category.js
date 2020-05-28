@@ -1,7 +1,7 @@
 $(function() {
     function buildChildHTML(child){
       var html =`<a class="child_category" id="${child.id}" 
-                  href="/categories/index.${child.id}">${child.name}</a>`;
+                  href="/categories.${child.id}">${child.name}</a>`;
       return html;
     }
   
@@ -26,7 +26,7 @@ $(function() {
   
     function buildGrandChildHTML(child){
       var html =`<a class="grand_child_category" id="${child.id}"
-                 href="/categories/index.${child.id}">${child.name}</a>`;
+                 href="/categories.${child.id}">${child.name}</a>`;
       return html;
     }
   

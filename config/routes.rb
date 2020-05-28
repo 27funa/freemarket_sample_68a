@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get 'buys/index'
   get 'logouts/index'
-  get 'categories/index'
   root 'posts#index'
 
   resources :posts
