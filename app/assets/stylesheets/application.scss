@@ -7,12 +7,15 @@
 @import "modules/footer";
 @import "modules/header";
 @import "modules/posts_new/new";
-@import "modules/accounts/accounts";
-@import "modules/profiles/profiles";
+@import "modules/profiles/profiles-index";
+@import "modules/profiles/profiles-form";
 @import "modules/user_informations/user_informations";
 @import "modules/delivery_informations/delivery_informations";
 @import "modules/user";
 @import "modules/buys";
+@import "modules/credits/form";
+@import "modules/credits/credits";
 @import "modules/osawas/frema-show";
 @import "modules/logouts/logouts";
 @import "modules/categories";
+@import "modules/registrations/edit";

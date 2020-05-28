@@ -1,0 +1,16 @@
+= render "posts/header"
+
+.mypage
+  = render 'profiles/menu'
+  .mypage-main.col-9
+    %h2.header_title
+      支払い方法
+    .single-container
+      .rgs-main__section
+        = render "form"
+      -# .payment-explain
+      -#   = icon("fas", "chevron-right", class:"arrows") 
+      -#   = link_to '支払い方法について', '#'
+
+=render "posts/app-banner"
+=render "posts/footer"

@@ -1,21 +1,22 @@
 =render "posts/header"
 .mypage
-  -# 左メニュ-
-  = render "accounts/menu"
+  -# 左メニュ
+  = render "menu"
   -# 右側
-  .profile
-    .profile__header
-      プロフィール
-    .profile__box
-      .profile__box__img
-      .profile__box__nickname
-        = form_with do |f|
-          =f.text_field :nickname, {class:"profile__box__nickname__form"}
-    .profile__text
-      -# あとでmodelを入れること
-      = form_with do |f|
-        = f.text_field :introduction, {class: "profile__text__form",placeholder:"自己紹介文を書きましょう！"}
-        = f.submit "変更する", {class: "profile__text__button"}
-
+  .mypage__right
+    .mypage__right__box
+      .mypage__right__box__image
+        -if @profile.present? && @profile.image.present?
+          = image_tag @profile.image.url ,class:"profile_now_img"
+        -else
+          = image_tag 'member_photo_noimage_thumb.png', alt: 'No image', height: '60px', width: '60px'
+      .mypage__right__box__nickname
+        = current_user.nickname
+      .mypage__right__box__exhibition
+        出品数　20
+    .mypage__right__box__text
+      %p
+        -if @profile.present?
+          = @profile.introduction
 =render "posts/app-banner"
 =render "posts/footer"

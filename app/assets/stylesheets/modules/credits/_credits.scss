@@ -1,0 +1,73 @@
+.mypage {
+  display:flex;
+  
+  .mypage-main {
+    float: right;
+    width: 600px;
+    background-color: white;
+    margin: 100px 0 200px 0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    .header_title {
+      text-align: center;
+      padding: 8px 24px;
+      font-weight: bold;
+      font-size: 24px;
+      border-bottom: 3px solid #f5f5f5;
+    }
+    .single-container {
+      padding: 64px;
+      .creditcard_section{
+        padding-bottom: 24px;
+        border-bottom: solid 2px #f5f5f5;
+        h3 {
+          font-weight: bold;
+          font-size: 16px;
+          margin-left: 88px;
+        }
+        .container {
+          padding: 0 88px;
+          display: flex;
+          justify-content: space-between;
+          .creditcard-info {
+            font-weight: normal;
+          }
+          .creditcard-info__delete {
+            margin-top: 20px;
+            padding: 2px 8px;
+            font-size: 12px;
+            color: #ff0000;
+            border: solid 1px #ff0000;
+            border-radius: 3px;
+          }
+        }
+        .new-card {
+          margin: 24px auto ;
+          width: 320px;
+          height: 50px;
+          background-color: #3CCACE;
+          .new-card-btn{
+            display: block;
+            line-height: 50px;
+            color: white;
+            text-align: center;
+            i {
+              margin-right: 10px;
+            }
+          }
+        }
+        .new-card:hover {
+          background-color: rgb(125, 208, 211);
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+    a {
+      color: black;
+    }
+
+  }
+
+}
