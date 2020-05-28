@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_many :posts
+  has_many :post
   has_ancestry
 end

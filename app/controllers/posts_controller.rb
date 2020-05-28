@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   
+  def index
+    @parents = Category.where(ancestry: nil)
+  end
+
   def new
     @post = Post.new
     @images = @post.images.build
@@ -8,11 +12,7 @@ class PostsController < ApplicationController
       format.html
       format.json
     end
-
-  def index
-    @parents = Category.where(ancestry: nil)
   end
-
 
   def create
     @post = Post.new(post_params)
@@ -39,9 +39,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:item_name,:description,:sales_status,:brand,:size,:condition,:price,:shipping_area,:arrival_days,:postage_payment,:posts_status,images_attributes: [:id,:image]).merge(user_id: current_user.id)
   end
-
-
-
-
 end
 
