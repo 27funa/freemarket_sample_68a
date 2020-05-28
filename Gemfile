@@ -93,5 +93,6 @@ gem 'mini_magick'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'ancestry'
 gem 'fog-aws'
 gem 'pry-rails'
