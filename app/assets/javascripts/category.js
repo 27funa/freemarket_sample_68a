@@ -13,7 +13,7 @@ $(function() {
       $(".grand_child_category").remove();
       $.ajax({
         type: 'GET',
-        url: '/posts/new',
+        url: '/categories/new',
         data: {parent_id: id},
         dataType: 'json'
       }).done(function(children) {
@@ -36,7 +36,7 @@ $(function() {
       $('#' + id).addClass("now-selected-second");
       $.ajax({
         type: 'GET',
-        url: '/posts/new',
+        url: '/categories/new',
         data: {parent_id: id},
         dataType: 'json'
       }).done(function(children) {
