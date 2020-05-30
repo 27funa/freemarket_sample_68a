@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :delivery_informations
   resources :osawas, only: :index
   resources :credits, except: [:show, :edit, :update]
-  resources :categories, only: :index
+  resources :categories, only: [:index, :new]
 
   resources :images,only: [:create]
 end

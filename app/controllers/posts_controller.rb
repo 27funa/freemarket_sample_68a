@@ -7,11 +7,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @images = @post.images.build
-    @children = Category.find(params[:parent_id]).children
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def create
