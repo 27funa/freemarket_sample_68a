@@ -21,12 +21,12 @@
               = f.fields_for :images do |c|
                 = c.label :image, class: "new__main__post__top__content__upload__camera__label" do
                   = icon("fas fa-camera", class: `icon`)
-                  = c.file_field :image,:multiple => true,name: "images[image][]",class: "new__main__post__top__content__upload__camera__file"
-
-            .new__main__post__top__content__upload__character
-              ドラッグアンドドロップ
-              <br>
-              またはクリックしてファイルをアップロード
+                  = c.file_field :image,:multiple => true,name: "images[image][]",class: "new__main__post__top__content__upload__camera__file",maxlength:"1"
+            #preview
+            -# .new__main__post__top__content__upload__character
+            -#   ドラッグアンドドロップ
+            -#   <br>
+            -#   またはクリックしてファイルをアップロード
         
       .new__main__post__top__second 
         .new__main__post__top__second__content
