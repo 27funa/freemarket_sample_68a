@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
+  before_action :yamada_ancestry
   protect_from_forgery with: :exception
   
 
@@ -20,5 +21,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
   end
+
+  def yamada_ancestry
+    @parents = Category.where(ancestry: nil)
+  end
+
   
 end
