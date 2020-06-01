@@ -23,7 +23,7 @@ class DeliveryInformationsController < ApplicationController
   end
 
   def update
-    if @delivery_information.update(@delivery_information)
+    if @delivery_information.update(delivery_information_params)
       redirect_to profiles_path
     else
       render "edit"

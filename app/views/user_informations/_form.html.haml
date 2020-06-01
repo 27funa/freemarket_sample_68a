@@ -3,16 +3,18 @@
   -# 左メニュ-
   = render "profiles/menu"
   -# 右側
+  
   .user__info
     .user__info__header
       .user__info__header__title
         本人情報の登録
       .user__info__header__explanation
         お客様の本人情報をご登録ください。
-
+      -# エラーメッセージ--------------------------------------------------------
+      = render 'layouts/error_message', model: @user_information
     -# 名前登録-----------------------------------------------------------------
     .user__info__main
-      = form_with model:@user_information do |f|
+      = form_with model:@user_information, local: true do |f|
         .label_content
           = label_tag :name, "お名前",{class:"label"}
           .required-mark

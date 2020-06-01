@@ -23,7 +23,7 @@ class UserInformationsController < ApplicationController
   end
 
   def update
-    if @user_information.update(@user_information)
+    if @user_information.update(user_information_params)
       redirect_to profiles_path
     else
       render "edit"

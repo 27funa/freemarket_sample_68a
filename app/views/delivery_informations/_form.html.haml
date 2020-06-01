@@ -7,10 +7,11 @@
     .user__info__header
       .user__info__header__title
         発送元・お届け先住所変更
-
+      -# エラーメッセージ--------------------------------------------------------
+      = render 'layouts/error_message', model: @delivery_information
     -# 名前登録-----------------------------------------------------------------
     .user__info__main
-      = form_with model:@delivery_information do |f|
+      = form_with model:@delivery_information,local: true do |f|
         .label_content
           = label_tag :name, "お名前",{class:"label"}
           .required-mark
