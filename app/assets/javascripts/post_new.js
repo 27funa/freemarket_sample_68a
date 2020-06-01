@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function() { 
   $('#post_images_attributes_0_image').change(function(){
     if ( !this.files.length ) {
       return;
