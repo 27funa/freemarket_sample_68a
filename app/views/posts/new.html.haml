@@ -48,11 +48,23 @@
         .new__main__post__top__third__content
           .new__main__post__top__third__content__details
             商品の詳細
-          .new__main__post__top__third__content__category
-            カテゴリー
-            .new__main__post__top__third__content__category__block
-              必須
-          .new__main__post__top__third__content__select
+
+          .listing-form-box
+            .listing-product-detail__category
+              = f.label 'カテゴリー', class: 'listing-default__label'
+              %span.listing-default--require 必須
+              .listing-select-wrapper
+                .listing-select-wrapper__box
+                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+         
+          -# .new__main__post__top__third__content__category
+          -#   カテゴリー
+          -#   .new__main__post__top__third__content__category__block
+          -#     必須
+          -# .new__main__post__top__third__content__select
+
+
           
             -# = f.select :budget_d, [["選択してください", 0],["レディース", 1],["メンズ", 2],["ベビー・キッズ", 3],["インテリア・住まい・小物", 4],["本・音楽・ゲーム", 5],["おもちゃ・ホビー・グッズ", 6],["コスメ・香水・美容", 7],["家電・スマホ・カメラ", 8],["スポーツ・レジャー", 9],["ハンドメイド", 10],["チケット", 11],["自動車・オートバイ", 12], ["その他", 13]], {}, {class: "new__main__post__top__third__content__select__form"}
 
