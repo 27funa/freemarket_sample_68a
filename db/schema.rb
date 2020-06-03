@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_094523) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
     t.index ["name"], name: "index_categories_on_name"
   end
 
