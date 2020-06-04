@@ -326,18 +326,17 @@
             overflow: hidden;
             margin: 0;
             z-index: auto;
-            // display: flex;
             img{
-              // max-width: 100%;
-              height: auto;
+              z-index: auto;
               position: absolute;
               top: 0;
               left: 0;
               right: 0;
               bottom: 0;
               width: 100%;
-              z-index: auto;
-              // height: 150px;
+              // max-width: 100%; 表示は好みで。
+              height: 150px;
+              // height: auto;
               object-fit: cover;
             }
           }
@@ -363,9 +362,7 @@
                   padding: 0;
                   .fa{
                     display: inline-block;
-                    // font: normal normal normal 14px/1 FontAwesome;見本とフォントが少し違うかも
                     font-size: inherit;
-                    // -webkit-font-smoothing: antialiased;
                     .fa-star::before{
                       content: "\f005";
                     }
@@ -386,8 +383,7 @@
       &__productLists::after{
         content:"";
         display: block;
-        width:30%;
-      
+        width:28%;
       }
     }
   }
