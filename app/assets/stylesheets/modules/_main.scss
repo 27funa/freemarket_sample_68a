@@ -288,6 +288,10 @@
     padding: 80px 0 0;
     background-color: #f8f8f8;
     height: 100%;
+    
+    // 3列目表示以降なし仮
+    max-height: 730px;
+    overflow: hidden;
     &__head{
       text-align: center;
       font-size: 28px;
@@ -311,76 +315,78 @@
       &__productLists{
         width: 780px;
         margin: 26px auto;
-        display: flex;
-        justify-content: space-around;
-        &__list{
-          width: 220px;
-          display: inline-block;
-          // float: left;
-          a{
-            text-decoration: none;
+        display: flex;        
+        flex-wrap: wrap;
+        justify-content: space-between;
+        a{
+          text-decoration: none;
+          margin-bottom: 40px;
+          .mainPickup__productBox__productLists__list__list--img{
+            width: 220px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            z-index: auto;
             background-color: #fff;
-            display: inline-block;
-            .mainPickup__productBox__productLists__list__list--img{
-              width: 220px;
-              height: 150px;
-              position: relative;
-              overflow: hidden;
-              margin: 0;
+            img{
               z-index: auto;
-              img{
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                z-index: auto;
-                height: 150px;
-                object-fit: cover;
-              }
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              // max-width: 100%; 表示は好みで。
+              height: 150px;
+              // height: auto;
+              object-fit: cover;
             }
-            .mainPickup__productBox__productLists__list__body{
-              background-color: white;
-              color: #333;
-              padding: 16px;
-              .mainPickup__productBox__productLists__list__body__name{
-                overflow: hidden;
-                line-height: 1.5;
-                font-size: 16px;
-                text-align: left;
-              }
-              .mainPickup__productBox__productLists__list__body__details{
-                font-size: 16px;
-                ul{
+          }
+          .mainPickup__productBox__productLists__list__body{
+            background-color: white;
+            color: #333;
+            padding: 16px;
+            .mainPickup__productBox__productLists__list__body__name{
+              overflow: hidden;
+              line-height: 1.5;
+              font-size: 16px;
+              text-align: left;
+            }
+            .mainPickup__productBox__productLists__list__body__details{
+              font-size: 16px;
+              ul{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                li{
                   display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-                  li{
-                    margin: 0;
-                    padding: 0;
-                    .fa{
-                      display: inline-block;
-                      // font: normal normal normal 14px/1 FontAwesome;見本とフォントが少し違うかも
-                      font-size: inherit;
-                      // -webkit-font-smoothing: antialiased;
-                      .fa-star::before{
-                        content: "\f005";
-                      }
+                  margin: 0;
+                  padding: 0;
+                  .fa{
+                    display: inline-block;
+                    font-size: inherit;
+                    .fa-star::before{
+                      content: "\f005";
                     }
                   }
                 }
-                p{
-                  font-size: 10px;
-                  text-align: left;
-                }
+              }
+              p{
+                font-size: 10px;
+                text-align: left;
               }
             }
           }
-          a:hover {
-            opacity: 0.5;
-          }
         }
+        a:hover {
+          opacity: 0.5;
+        }
+      }
+      &__productLists::after{
+        content:"";
+        display: block;
+        width:28%;
       }
     }
   }
