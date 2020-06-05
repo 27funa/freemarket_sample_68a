@@ -73,7 +73,7 @@
         %a{href:"#"} 
           %h3.mainPickup__productBox__productHead__title 新規投稿商品
       .mainPickup__productBox__productLists
-        - @posts.each do |post|
+        - @posts.reverse_each do |post|
           %a{href:"#"} 
             %figure.mainPickup__productBox__productLists__list__list--img
               = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
