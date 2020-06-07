@@ -12,7 +12,15 @@ $(document).on('turbolinks:load', function() { 
     //   alert ("画像は3枚までです。")
     //   return false
     // }
-    // else{
+    
+
+      if (len > 3){
+        alert("画像は3舞までです。")
+        $('input[type=file]').val('');
+        return false
+
+      }
+      else{
     for ( var i = 0; i < len; i++ ) {
       var file = $files[i];
       var fr = new FileReader();
@@ -27,6 +35,7 @@ $(document).on('turbolinks:load', function() { 
       fr.readAsDataURL(file);
     
   }
+}
   console.log($files)
 
 });
@@ -67,7 +76,7 @@ $(document).on('turbolinks:load', function() { 
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                   </select>
-                                  <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                                  
                                 </div>
                               </div>`;
       $('.listing-product-detail__category').append(grandchildSelectHtml);

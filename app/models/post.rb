@@ -16,5 +16,7 @@ class Post < ApplicationRecord
   validates :arrival_days, presence: true
   validates :postage_payment, presence: true
 
+  validates :images, presence: true
+
   
 end

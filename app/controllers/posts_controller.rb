@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
     if @post.save
 
-      params[:images]['image'].each do |img|
+      params[:images]['image'].first(3).each do |img|
         @images = @post.images.create(image: img, post_id: @post.id)
       end
       redirect_to @post
