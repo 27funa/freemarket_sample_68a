@@ -43,6 +43,7 @@ $(document).on('turbolinks:load', function() { 
       var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
       return html;
     }
+
     // 子カテゴリーの表示作成
     function appendChidrenBox(insertHTML){
       var childSelectHtml = '';
@@ -134,6 +135,7 @@ $(document).on('turbolinks:load', function() { 
       }
     });
   // });
+
 
 
 
