@@ -329,24 +329,6 @@
             margin: 0;
             z-index: auto;
             background-color: #fff;
-            .mainPickup__productBox__productLists__list__list--img__sold{
-              width: 0;
-              height: 0;
-              border-top: 60px solid #ea352d ;
-              border-right: 60px solid transparent;
-              border-bottom: 60px solid transparent;
-              border-left: 60px solid #ea352d ;
-              z-index:100;
-              position: relative;
-                &__inner{
-                  transform: rotate(-45deg);
-                  font-size: 25px;
-                  margin:-30px 0px 0px -55px;
-                  color: #fff;
-                  letter-spacing: 2px;
-                  font-weight: 600;
-                }
-              }
             img{
               z-index: auto;
               position: absolute;
