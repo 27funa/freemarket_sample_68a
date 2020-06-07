@@ -39,7 +39,4 @@ class UserInformationsController < ApplicationController
   def set_user_information
     @user_information = UserInformation.find_by(user_id: current_user.id)
   end
-
-
-
 end

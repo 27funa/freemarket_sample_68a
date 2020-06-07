@@ -20,6 +20,5 @@ $(document).on('turbolinks:load', function() { 
       fr.readAsDataURL(file);
     }
  
-    // $('#preview').css('display','block');
   });
 });
