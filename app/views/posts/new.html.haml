@@ -15,7 +15,7 @@
             .new__main__post__top__content__upper__block
               必須
           .new__main__post__top__content__text
-            最大10枚までアップロードできます
+            最大3枚までアップロードできます
           .new__main__post__top__content__upload
             .new__main__post__top__content__upload__camera
               = f.fields_for :images do |c|
@@ -51,8 +51,10 @@
 
           .listing-form-box
             .listing-product-detail__category
-              = f.label 'カテゴリー', class: 'listing-default__label'
-              %span.listing-default--require 必須
+              .new__main__post__top__third__content__details
+                = f.label 'カテゴリー', class: 'listing-default__label'
+              
+                %span.listing-default--require 必須
               .listing-select-wrapper
                 .listing-select-wrapper__box
                   = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}

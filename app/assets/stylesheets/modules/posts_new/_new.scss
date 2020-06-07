@@ -3,7 +3,7 @@
   width: 38px;
   margin-left:15px;
   font-size:12px;
-  background-color:red;
+  background-color:#3CCACE;
   border-radius:5px;
   padding: 2px 5px;
   color:#fff;
@@ -204,14 +204,14 @@ $sub-color: #ffffff;
         }
       }
       &__third {
-        height: 430px;
+        // height: 550px; 消しました 6/6
         background-color: $sub-color;
         margin: 0 auto;
         border: solid 1px;
         border-color: $main-color;
 
         &__content {
-          height: 370px;
+          // height: 370px; 消しました 6/6
           vertical-align: baseline;
           margin: 33px 38px 35px 38px;
           @include border-style;
@@ -644,5 +644,32 @@ $sub-color: #ffffff;
     img{
       width: 100%;
       height: 150px
+    }
+}
+
+//追加 カテゴリー 6/6 osawa
+
+.listing-select-wrapper__box{
+  .listing-select-wrapper__box--select{
+    width: 100%;
+    height: 48px;
+  }
+  .fa-chevron-down{
+    justify-content: center;
+    display: flex;
+  }
+}
+.new__main__post__top__third__content__details{
+  display: flex;
+    height: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.5em;
+    margin-top: 25px;
+    margin-bottom: 16px;
+    color: black!important;
+
+    span{
+      @include block;
     }
 }
