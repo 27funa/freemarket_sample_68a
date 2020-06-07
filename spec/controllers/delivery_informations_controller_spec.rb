@@ -49,5 +49,23 @@ describe DeliveryInformationsController do
           expect(response).to redirect_to(profiles_path)
       end
     end
+
   end
+  describe "PATCH #update" do
+    before do
+      login user
+    end
+    it "更新される" do
+      @deli_info_update = FactoryBot.create(:delivery_information, user: user)
+      patch :update, params:{id: @deli_info_update.id, delivery_information: attributes_for(:delivery_information, first_name: "田中")}
+      expect(user.delivery_information.reload.first_name).to eq "田中"
+    end
+
+    it "更新した場合マイページトップに戻る" do
+      @deli_info_update = FactoryBot.create(:delivery_information, user: user)
+      patch :update, params:{id: @deli_info_update.id, delivery_information: attributes_for(:delivery_information, first_name: "田中")}
+      expect(response).to redirect_to(profiles_path)
+    end
+  end
+  
 end
