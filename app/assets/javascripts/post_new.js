@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function() { 
     
 
       if (len > 3){
-        alert("画像は3舞までです。")
+        alert("画像は3枚までです。")
         $('input[type=file]').val('');
         return false
 
