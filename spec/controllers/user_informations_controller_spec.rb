@@ -45,9 +45,26 @@ describe UserInformationsController do
       end
 
       it "保存されればマイページトップに戻る" do
-          post :create, params:{user_information: attributes_for(:user_information)}
-          expect(response).to redirect_to(profiles_path)
+        post :create, params:{user_information: attributes_for(:user_information)}
+        expect(response).to redirect_to(profiles_path)
       end
+    end
+  end
+
+  describe "PATCH #update" do
+    before do
+      login user
+    end
+    it "更新される" do
+      @user_info_update = FactoryBot.create(:user_information, user: user)
+      patch :update, params:{id: @user_info_update.id, user_information: attributes_for(:user_information, first_name: "田中")}
+      expect(user.user_information.reload.first_name).to eq "田中"
+    end
+
+    it "更新した場合マイページトップに戻る" do
+      @user_info_update = FactoryBot.create(:user_information, user: user)
+      patch :update, params:{id: @user_info_update.id, user_information: attributes_for(:user_information, first_name: "田中")}
+      expect(response).to redirect_to(profiles_path)
     end
   end
 end
