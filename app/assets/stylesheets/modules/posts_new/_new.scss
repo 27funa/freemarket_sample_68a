@@ -298,14 +298,14 @@ $sub-color: #ffffff;
       }
 
       &__fourth {
-        height: 430px;
+        // height: 430px; 6/11 by osawa
         background-color: $sub-color;
         margin: 0 auto;
         border: solid 1px;
         border-color: $main-color;
 
         &__content {
-          height: 370px;
+          // height: 370px; 6/11 by osawa
           vertical-align: baseline;
           margin: 33px 38px 35px 38px;
           @include border-style;
