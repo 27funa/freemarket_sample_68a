@@ -74,7 +74,7 @@
           %h3.mainPickup__productBox__productHead__title 新規投稿商品
       .mainPickup__productBox__productLists
         - @posts.reverse_each do |post|
-          %a{href:"#"} 
+          = link_to post do
             %figure.mainPickup__productBox__productLists__list__list--img
               -if post.sales_status.present? 
                 = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
@@ -103,7 +103,7 @@
           %h3.mainPickup__productBox__productHead__title アーカイバ
       .mainPickup__productBox__productLists
         - @posts.each do |post|
-          %a{href:"#"} 
+          = link_to post do
             %figure.mainPickup__productBox__productLists__list__list--img
               -if post.sales_status.present? 
                 = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
