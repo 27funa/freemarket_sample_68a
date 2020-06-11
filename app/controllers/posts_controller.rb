@@ -36,7 +36,6 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-
       params[:images]['image'].first(3).each do |img|
         @images = @post.images.create(image: img, post_id: @post.id)
       end
@@ -66,7 +65,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:item_name,:description,:sales_status,:brand,:size,:condition,:price,:shipping_area,:arrival_days,:postage_payment,:posts_status,:category_id,images_attributes: [:id,:image]).merge(user_id: current_user.id,category_id:params[:category_id])
+    params.require(:post).permit(:item_name,:description,:sales_status,:brand,:size,:condition,:price,:shipping_area,:arrival_days,:postage_payment,:posts_status,:category_id,:image_taken).merge(user_id: current_user.id,category_id:params[:category_id])
+  end
+
+  def image_params
+ 
   end
 end
 
