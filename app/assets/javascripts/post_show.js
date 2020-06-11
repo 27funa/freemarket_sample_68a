@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
 
-  $(".ImageTopLists").eq(0).addClass("show")
+  $(".ImageTopLists").eq(0).addClass("show1")
   $(".show__image__grid__list").eq(0).addClass("active")
 
 
@@ -12,7 +12,7 @@ let tabs = $('.show__image__grid__list a[href^="#"]')
     $('.active').removeClass("active");
     $(this).addClass("active");  
     const index = tabs.index(this);
-    $(".ImageTopLists").removeClass("show").eq(index).addClass("show");
+    $(".ImageTopLists").removeClass("show1").eq(index).addClass("show1");
 
     return false;
   });
