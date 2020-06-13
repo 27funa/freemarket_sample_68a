@@ -58,7 +58,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    # @post =Post.find(params[:id])
     @images = @post.images
 
  
@@ -66,13 +65,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # @post = Post.find(params[:id])
     @post.destroy
     redirect_to("/")
   end
 
   def edit
-    # @post = Post.find(params[:id])
     # 選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
@@ -93,7 +90,6 @@ class PostsController < ApplicationController
     end
 
   def update
-    # @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path, notice: ''
     else
