@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   
   def index
     @posts = Post.all
@@ -57,7 +59,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post =Post.find(params[:id])
+    # @post =Post.find(params[:id])
     @images = @post.images
 
  
@@ -65,13 +67,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
     @post.destroy
     redirect_to("/")
   end
 
   def edit
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
     # 選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_parent_array = ["---"]
     #データベースから、親カテゴリーのみ抽出し、配列化
@@ -92,7 +94,7 @@ class PostsController < ApplicationController
     end
 
   def update
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path, notice: ''
     else
@@ -110,6 +112,10 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:item_name,:description,:sales_status,:brand,:size,:condition,:price,:shipping_area,:arrival_days,:postage_payment,:posts_status,:category_id,images_attributes: [:id,:image]).merge(user_id: current_user.id,category_id:params[:category_id])
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
 
