@@ -106,7 +106,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:item_name,:description,:sales_status,:brand,:size,:condition,:price,:shipping_area,:arrival_days,:postage_payment,:posts_status,:category_id,:image_taken).merge(user_id: current_user.id,category_id:params[:category_id])
+    params.require(:post).permit(:item_name,:description,:sales_status,:brand,:size,:condition,:price,:shipping_area_id,:arrival_days,:postage_payment,:posts_status,:category_id,:image_taken).merge(user_id: current_user.id,category_id:params[:category_id])
   end
 
   def image_params

@@ -142,7 +142,7 @@
     = @post.category.name
     の出品一覧
   .selfsLists
-    - @post.category.post.where(sales_status: true).first(6).each do |post|
+    - @post.category.posts.where(sales_status: true).first(6).each do |post|
       .selfsList
         =link_to post do 
           %figure.selfsList__image
