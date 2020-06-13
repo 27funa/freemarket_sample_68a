@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'buys/index'
   get 'logouts/index'
   root 'posts#index'
-
+  post "posts/:id/destroy" => "posts#destroy"
   resources :posts do
     collection do
       get 'get_category_children', defaults: { format: 'json' }

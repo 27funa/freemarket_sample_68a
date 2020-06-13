@@ -1,5 +1,14 @@
 = render "posts/header"
 %section.show
+  -if user_signed_in? && @post.user_id == current_user.id
+    .show__btn
+      .show__btn__edit
+        = link_to edit_post_path(@post) do
+          編集
+      .show__btn__delete
+        = link_to post_path,method: :delete, data: { confirm: " 「#{@post.item_name}」を削除します。よろしいですか？"} do
+          削除
+
   .showpage
     .showpage__grid
       .showpage__grid__left

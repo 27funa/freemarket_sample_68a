@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   validates :item_name, presence: true
   validates :description, presence: true
   validates :sales_status, presence: true
-  validates :brand, presence: true
+  # validates :brand, presence: true
   validates :condition, presence: true
   validates :shipping_area, presence: true
   validates :arrival_days, presence: true
