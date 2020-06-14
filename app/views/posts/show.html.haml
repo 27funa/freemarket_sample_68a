@@ -27,12 +27,13 @@
             = @post.postage_payment
         .show__btn
           -if user_signed_in?
-            - if current_user.id == @post.user
-              = button_to  do
-                購入画面に進む
-            - else
+            - if current_user.id == @post.user.id
               .user_buy_button
                 購入できません。
+            - else
+              .user_buy_button
+                = button_to  do
+                  購入画面に進む
           - else
             .user_buy_button
               = button_to new_user_session_path do
