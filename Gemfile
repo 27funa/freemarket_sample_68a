@@ -97,4 +97,6 @@ gem 'jquery-rails'
 gem 'ancestry'
 gem 'fog-aws'
 gem 'pry-rails'
+
 gem 'active_hash', '~> 2.3.0'
+

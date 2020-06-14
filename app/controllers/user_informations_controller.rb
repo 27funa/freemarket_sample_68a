@@ -33,7 +33,7 @@ class UserInformationsController < ApplicationController
   private
 
   def user_information_params
-    params.require(:user_information).permit(:family_name,:first_name,:family_name_kana,:first_name_kana,:birth,:postal_code,:state,:city,:address_line_1,:address_line_2).merge(user_id: current_user.id)
+    params.require(:user_information).permit(:family_name,:first_name,:family_name_kana,:first_name_kana,:birth,:postal_code,:state_id,:city,:address_line_1,:address_line_2).merge(user_id: current_user.id)
   end
 
   def set_user_information

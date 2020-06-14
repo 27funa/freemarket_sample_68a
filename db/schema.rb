@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_135141) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.integer "postal_code", null: false
-    t.string "state", null: false
+    t.integer "state_id", null: false
     t.string "city", null: false
     t.string "address_line_1", null: false
     t.string "address_line_2"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_135141) do
     t.string "first_name_kana", null: false
     t.date "birth", null: false
     t.integer "postal_code", null: false
-    t.string "state", null: false
+    t.integer "state_id", null: false
     t.string "city", null: false
     t.string "address_line_1", null: false
     t.string "address_line_2"

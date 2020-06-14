@@ -9,7 +9,7 @@ ja:
         first_name_kana: 名前（かな）
         birth: 誕生日
         postal_code: 郵便番号
-        state: 都道府県
+        state_id: 都道府県
         city: 市町村
         address_line_1: 番地
       delivery_information:
