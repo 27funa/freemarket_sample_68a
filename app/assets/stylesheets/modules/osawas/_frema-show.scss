@@ -1,6 +1,53 @@
 .show{background-color: #f8f8f8;
   padding-top: 20px;
 }
+.show__btn {
+  display: flex;
+  margin-top: 10px;
+  height: 30px;
+  justify-content: center;
+
+  :hover {
+    background: #3ccacc;
+    color: #FFF;
+  }
+   
+  &__edit {
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-left: solid 4px #3ccacc;
+    border-right: solid 4px #3ccacc;
+    background: #e1f3ff;
+    transition: .4s;
+    margin-right: 20px;
+    line-height: 15px;
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  }
+
+  &__delete {
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-left: solid 4px #3ccacc;
+    border-right: solid 4px #3ccacc;
+    background: #e1f3ff;
+    transition: .4s;
+    line-height: 15px;
+      
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  }
+}
+  
 .showpage{
   background-color: white;
   padding: 20px;

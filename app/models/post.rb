@@ -1,12 +1,16 @@
 class Post < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :shipping_area
+
   belongs_to :user
   belongs_to :category,optional: true
 
   has_many :images
 
   accepts_nested_attributes_for :images, allow_destroy: true
-
   
+  
+
   # validates :item_name, presence: { message: "を入力してください"}
   # validates :description, presence: { message: "を入力してください"}
   # validates :sales_status, presence: true
@@ -54,14 +58,15 @@ class Post < ApplicationRecord
       errors[:postage_payment] << "配達料の負担を選択してください"
     end
 
-    if shipping_area.blank?
-      errors[:shipping_area] << "配達エリアを選択してください"
+    if shipping_area_id.blank?
+      errors[:shipping_area_id] << "配達エリアを選択してください"
     end
 
     if arrival_days.blank?
       errors[:arrival_days] << "発送までの日数を入力してください"
     end
   end
+
 
 
   
