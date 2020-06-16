@@ -1,5 +1,5 @@
 - @posts.each do |post|
-  %a{href:"/posts/#{post.id}"}
+  %a{href: post_path(post.id)}
     .post-item-box
       %figure.post-item-box__image
         = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img'

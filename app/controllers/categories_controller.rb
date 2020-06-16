@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:parent, :child, :grandchild]
+  before_action :set_parent, only: [:parent, :child]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -17,13 +18,11 @@ class CategoriesController < ApplicationController
 
 
   def parent
-    @parent = Category.find(params[:id]).children
     grandchildren_id = @category.descendant_ids
     find_category_item(grandchildren_id)
   end
 
   def child
-    @parent = Category.find(params[:id]).children
     grandchildren_id = @category.child_ids
     find_category_item(grandchildren_id)
   end
@@ -39,6 +38,10 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def set_parent
+    @parent = Category.find(params[:id]).children
   end
 
   def category_present(category_item)

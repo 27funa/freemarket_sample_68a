@@ -3,7 +3,7 @@
 
   .category-child-list
     -@parent.each do |parent|
-      = link_to "#{parent.name}", "/categories/#{parent.id}/child", class: "category-child-list",id: "#{parent.id}"
+      = link_to "#{parent.name}", child_category_path(parent.id), class: "category-child-list",id: "#{parent.id}"
 
   .category-title
     %h1= "#{@category.name}の商品一覧"
