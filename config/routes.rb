@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'buys/index'
   get 'logouts/index'
   root 'posts#index'
+  # post "posts/:id/destroy" => "posts#destroy"
+  
 
   resources :posts do
     collection do
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
     # get 'get_category_children/index', defaults: { format: 'json' }
     # get 'get_category_grandchildren/index', defaults: { format: 'json' }
  
-
+  # resources :posts, only: [:destroy]
   resources :profiles
   resources :user_informations
   resources :delivery_informations

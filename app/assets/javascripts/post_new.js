@@ -1,18 +1,39 @@
 $(document).on('turbolinks:load', function() { 
-  $('#post_images_attributes_0_image').change(function(){
+
+  $('.error_select').on('change', function(){
+    var index = $('.error_select').index(this);
+    $(".error_select_box").eq(index).find(".laramins").css("display","none")
+  });
+
+
+
+  $("#post_image_taken").css("display","none");
+  $("#post_image_taken").val('');
+  $('#post_image').change(function(){
    if ( !this.files.length ) {
+    $("#post_image_taken").val('');
+    $('#preview').text('');
       return;
     }
     $('#preview').text('');
  
     var $files = $(this).prop('files');
     var len = $files.length;
+    
 
-    // if (len > 3){
-    //   alert ("画像は3枚までです。")
-    //   return false
-    // }
-    // else{
+      if ($files.length > 3){
+        alert("画像は3枚までです。")
+        $('input[type=file]').val('');
+        $("#post_image_taken").val('');
+        return false
+
+      }
+      else{
+        $(this).css("display","none")
+       $("#post_image_taken").val("in");
+
+
+
     for ( var i = 0; i < len; i++ ) {
       var file = $files[i];
       var fr = new FileReader();
@@ -20,16 +41,50 @@ $(document).on('turbolinks:load', function() { 
     
       fr.onload = function(e) {
         var src = e.target.result;
-        var img = '<img src="'+ src +'">';
+        var img = `<img src= ${src}>`;
+        // var img = `<div class='item-image__operetion'><img src= ${src}>
+        // <div class='item-image__operetion--delete'>削除</div></div>`;
         $('#preview').append(img);
       }
  
       fr.readAsDataURL(file);
     
   }
+
+
+
+
+}
+
+
+
+
+
   console.log($files)
 
 });
+
+// $(document).on("click", '.item-image__operetion--delete', function(){
+//   //プレビュー要素を取得
+//   var target_image = $('.item-image__operetion--delete').index(this)
+
+//   console.log(target_image)
+//   //プレビューを削除
+//   var target_delete = $(".item-image__operetion").eq(target_image)
+//   var $files = $('#post_image').prop('files');
+//   console.log($files[target_image])
+
+//   $('input[type=file]')[0].files[0].val("")
+
+//   // $files[target_image].val("")
+//   target_delete.remove()
+
+
+  // var $files = $('#post_image').prop('files');
+  // console.log($files[target_delete])
+  //inputタグに入ったファイルを削除
+  // $files[0].val""
+// })
 
 
 
@@ -43,6 +98,7 @@ $(document).on('turbolinks:load', function() { 
       var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
       return html;
     }
+
     // 子カテゴリーの表示作成
     function appendChidrenBox(insertHTML){
       var childSelectHtml = '';
@@ -66,7 +122,7 @@ $(document).on('turbolinks:load', function() { 
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                   </select>
-                                  <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                                  
                                 </div>
                               </div>`;
       $('.listing-product-detail__category').append(grandchildSelectHtml);
@@ -134,6 +190,7 @@ $(document).on('turbolinks:load', function() { 
       }
     });
   // });
+
 
 
 
