@@ -1,0 +1,16 @@
+= render "posts/header"
+.category-item-list
+
+  .category-child-list
+    -@parent.each do |parent|
+      = link_to "#{parent.name}", "/categories/#{parent.id}/grandchild", class: "category-child-list",id: "#{parent.id}"
+
+  .category-title
+    %h1= "#{@category.name}の商品一覧"
+
+  .category-item-contents
+    .category-item-contents__list
+      =render "posts/item-box"
+      
+= render "posts/app-banner"
+= render "posts/footer"
