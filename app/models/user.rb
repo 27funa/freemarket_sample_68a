@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_one :delivery_information, dependent: :destroy
 
   validates :nickname, presence: true, uniqueness: true
+
+  has_many :posts
 end

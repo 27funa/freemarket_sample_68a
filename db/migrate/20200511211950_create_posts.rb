@@ -10,7 +10,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :size, null:false
       t.string :condition, null:false
       t.integer :price, null:false
-      t.string  :shipping_area, null:false
+      t.integer  :shipping_area_id, null:false
       t.string  :arrival_days, null:false
       t.string  :postage_payment, null:false
       # t.string  :posts_status

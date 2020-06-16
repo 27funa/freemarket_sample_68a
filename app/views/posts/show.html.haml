@@ -1,67 +1,94 @@
+
 = render "posts/header"
 %section.show
+  -if user_signed_in? && @post.user_id == current_user.id
+    .show__btn
+      .show__btn__edit
+        = link_to edit_post_path(@post) do
+          編集
+      .show__btn__delete
+        = link_to post_path,method: :delete, data: { confirm: " 「#{@post.item_name}」を削除します。よろしいですか？"} do
+          削除
+
   .showpage
     .showpage__grid
       .showpage__grid__left
         .show__title
-          Tシャツ
+          = @post.item_name
         .show__image
           .show__image__top
-            =image_tag @images.first.image.url
-          .show__image__grid
+            %ul
+              - @images.each do |y|
+              
+                %li.ImageTopLists
+                  =image_tag y.image.url
+          .show__image__grid            
             - @images.each do |y|
               .show__image__grid__list
-                =image_tag y.image.url
+                = link_to "#a" do
+                  =image_tag y.image.url
             
         .show__yen
-          500円 
+          = @post.price
+          円
           %span.solle
-            （税込み）送料込み
+            （税込み)
+            = @post.postage_payment
         .show__btn
-          = button_to  do
-            購入画面に進む
+          -if user_signed_in?
+            - if current_user.id == @post.user.id
+              .user_buy_button
+                購入できません。
+            - else
+              .user_buy_button
+                = button_to  do
+                  購入画面に進む
+          - else
+            .user_buy_button
+              = button_to new_user_session_path do
+                購入できません。(ログイン画面へ)
 
 
       .showpage__grid__right
         .show__discription
-          『Tシャツ』は、49回の取引実績を持つルンルンさんから出品されました。アズール（Tシャツ/カットソー(半袖/袖なし)/レディース）の商品で、群馬県から1~2日で発送されます。
+          =@post.description
         .show__table
           %table
             %tr
               %td.left
                 出品者
               %td.right
-                ルンルン
+                =@post.user.nickname
             %tr
               %td.left
                 カテゴリー
               %td.right
-                レディース
+                =@post.category.parent.parent.name
             %tr
               %td.left
-                トップス
+                =@post.category.parent.name
               %td.right
-                Tシャツ/カットソー（半袖/半袖なし）
+                =@post.category.name
             %tr
               %td.left
                 ブランド
               %td.right
-                アズール
+                =@post.brand
             %tr
               %td.left
                 商品サイズ
               %td.right
-                S
+                = @post.size
             %tr
               %td.left
                 商品の状態
               %td.right
-                目立った傷や汚れなし
+                = @post.condition
             %tr
               %td.left
                 配送料の負担
               %td.right
-                送料込み(出品者負担)
+                = @post.postage_payment
             %tr
               %td.left
                 配送方法
@@ -71,175 +98,72 @@
               %td.left
                 配送元地域
               %td.right
-                群馬県
+                = @post.shipping_area
             %tr
               %td.left
                 発送日の目安
               %td.right
-                1~2日で発送
+                = @post.arrival_days
         .show__likes
           =button_to do
             いいね！
+        .sales_status
+          - if @post.sales_status = true
+            出品中です！
+          - else 
+            %span 
+              売り切れました。
 
 %section.selfExhibition
   %h2
-    ルンルンさんの出品一覧
+    = @post.user.nickname
+    の出品一覧
   .selfsLists
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
+    - @post.user.posts.where(sales_status: true).first(6).each do |post|
+      .selfsList
+        =link_to post do 
+          %figure.selfsList__image
+            -# =post.images.each do |image|
+            =image_tag post.images.first.image.url
+          .selfsList__body
+            %h3.name
+              =post.item_name
+            .details
+              %ul
+                %li
+                  =post.price
+                %li
+                  0
+              %p
+                (税込み)
+    
 
 %section.selfExhibition
   %h2
-    カテゴリーに関する出品一覧
+    = @post.category.name
+    の出品一覧
   .selfsLists
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
-    .selfsList
-      =link_to do 
-        %figure.selfsList__image
-          =image_tag ("")
-        .selfsList__body
-          %h3.name
-            product3
-          .details
-            %ul
-              %li
-                3000円
-              %li
-                0
-            %p
-              (税込み)
+    - @post.category.posts.where(sales_status: true).first(6).each do |post|
+      .selfsList
+        =link_to post do 
+          %figure.selfsList__image
+            =image_tag post.images.first.image.url
+          .selfsList__body
+            %h3.name
+              =post.item_name
+            .details
+              %ul
+                %li
+                  =post.price
+                %li
+                  0
+              %p
+                (税込み)
+    
 
 = render "posts/app-banner"
 = render "posts/footer"
+%a.exhibition{href:new_post_path}
+  .exhibitionBtn
+    %span.exhibitionBtn__text 出品
+    = image_tag 'icon_camera.png', alt: 'no image', class: 'exhibitionBtn__icon'
