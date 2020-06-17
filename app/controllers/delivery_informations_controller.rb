@@ -23,7 +23,7 @@ class DeliveryInformationsController < ApplicationController
   end
 
   def update
-    if @delivery_information.update(@delivery_information)
+    if @delivery_information.update(delivery_information_params)
       redirect_to profiles_path
     else
       render "edit"
@@ -33,7 +33,7 @@ class DeliveryInformationsController < ApplicationController
   private
 
   def delivery_information_params
-    params.require(:delivery_information).permit(:family_name,:first_name,:family_name_kana,:first_name_kana,:postal_code,:state,:city,:address_line_1,:address_line_2,:tel).merge(user_id: current_user.id)
+    params.require(:delivery_information).permit(:family_name,:first_name,:family_name_kana,:first_name_kana,:postal_code,:state_id,:city,:address_line_1,:address_line_2,:tel).merge(user_id: current_user.id)
   end
 
   def set_delivery_information

@@ -65,91 +65,22 @@
           = image_tag 'icon-04.png', alt: 'no image', class: 'img'        
         %h3.item__subtitle 様々な支払いに対応
         %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    
 
-  %section.mainPickup
-    %h2.mainPickup__head　ピックアップカテゴリー
+    -# %section.mainPickup
+    %h2.mainPickup__head ピックアップカテゴリー
     .mainPickup__productBox
       .mainPickup__productBox__productHead
         %a{href:"#"} 
           %h3.mainPickup__productBox__productHead__title 新規投稿商品
       .mainPickup__productBox__productLists
-        .mainPickup__productBox__productLists__list
-          %a{href:"#"} 
-            %figure.mainPickup__productBox__productLists__list__list--img
-              = image_tag 'sushi_aburi_toro.png', alt: 'no image', class: 'img'        
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name product3
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
-        .mainPickup__productBox__productLists__list
-          %a{href:"#"} 
-            %figure.mainPickup__productBox__productLists__list__list--img
-              = image_tag 'sushi_kinmedai.png', alt: 'no image', class: 'img'        
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name product3
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 20000円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
-        .mainPickup__productBox__productLists__list
-          %a{href:"#"} 
-            %figure.mainPickup__productBox__productLists__list__list--img
-              = image_tag 'sushi_hamburg_tare.png', alt: 'no image', class: 'img'        
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name product3
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
+        = render "item-box"
 
   %section.mainPickup
-    %h2.mainPickup__head　ピックアップブランド
+    %h2.mainPickup__head ピックアップブランド
     .mainPickup__productBox
       .mainPickup__productBox__productHead
         %a{href:"#"} 
           %h3.mainPickup__productBox__productHead__title アーカイバ
       .mainPickup__productBox__productLists
-        .mainPickup__productBox__productLists__list
-          %a{href:"#"} 
-            %figure.mainPickup__productBox__productLists__list__list--img
-              = image_tag 'sushi_aburi_toro.png', alt: 'no image', class: 'img'        
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name product3
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
-        .mainPickup__productBox__productLists__list
-          %a{href:"#"} 
-            %figure.mainPickup__productBox__productLists__list__list--img
-              = image_tag 'sushi_kinmedai.png', alt: 'no image', class: 'img'        
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name product3
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 20000円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
-        .mainPickup__productBox__productLists__list
-          %a{href:"#"} 
-            %figure.mainPickup__productBox__productLists__list__list--img
-              = image_tag 'sushi_hamburg_tare.png', alt: 'no image', class: 'img'        
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name product3
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
+        = render "item-box"

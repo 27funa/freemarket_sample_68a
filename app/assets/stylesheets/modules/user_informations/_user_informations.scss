@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -48,6 +49,9 @@
     }
   }
 
+// エラ〜メッセージ-------------------------------
+
+
 // 入力項目---------------------------------------
   &__main {
     margin:30px 100px 0 150px;
@@ -81,6 +85,13 @@
       .state-box-style{
         @include box-style;
       }
+      #user_information_state_id {
+        @include box-style;
+      }
+
+      // #delivery_information_state_id {
+      //   @include box-style;
+      // }
       .button {
         font-size:16px;
         padding-left:10px;

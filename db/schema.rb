@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_070215) do
+ActiveRecord::Schema.define(version: 2020_06_13_135141) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_070215) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.integer "postal_code", null: false
-    t.string "state", null: false
+    t.integer "state_id", null: false
     t.string "city", null: false
     t.string "address_line_1", null: false
     t.string "address_line_2"
@@ -62,12 +62,15 @@ ActiveRecord::Schema.define(version: 2020_05_31_070215) do
     t.string "size", null: false
     t.string "condition", null: false
     t.integer "price", null: false
-    t.string "shipping_area", null: false
+    t.integer "shipping_area_id", null: false
     t.string "arrival_days", null: false
     t.string "postage_payment", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_taken"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_070215) do
     t.string "first_name_kana", null: false
     t.date "birth", null: false
     t.integer "postal_code", null: false
-    t.string "state", null: false
+    t.integer "state_id", null: false
     t.string "city", null: false
     t.string "address_line_1", null: false
     t.string "address_line_2"

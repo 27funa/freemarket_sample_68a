@@ -1,0 +1,12 @@
+= render "posts/header"
+.category-item-list
+
+  .category-title
+    %h1= "#{@category.name}の商品一覧"
+
+  .category-item-contents
+    .category-item-contents__list
+      =render "posts/item-box"
+
+= render "posts/app-banner"
+= render "posts/footer"

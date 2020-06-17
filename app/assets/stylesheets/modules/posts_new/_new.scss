@@ -3,7 +3,7 @@
   width: 38px;
   margin-left:15px;
   font-size:12px;
-  background-color:red;
+  background-color:#3CCACE;
   border-radius:5px;
   padding: 2px 5px;
   color:#fff;
@@ -64,7 +64,6 @@ $sub-color: #ffffff;
     &__post {
       height: 100%;
       width: 750px;
-      background-color: $sub-color;
       margin: 0 auto;
 
       &__top {
@@ -204,14 +203,14 @@ $sub-color: #ffffff;
         }
       }
       &__third {
-        height: 430px;
+
         background-color: $sub-color;
         margin: 0 auto;
         border: solid 1px;
         border-color: $main-color;
 
         &__content {
-          height: 370px;
+          // height: 370px; 消しました 6/6
           vertical-align: baseline;
           margin: 33px 38px 35px 38px;
           @include border-style;
@@ -223,6 +222,20 @@ $sub-color: #ffffff;
             font-weight: 600;
             line-height: 1.5em;
             margin-bottom: 24px;
+          }
+
+          &__listing-form-box {
+            display: flex;
+            height: 20px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 16px;
+
+            &__listing-product-detail__category {
+              font-size: 40px;
+            }
           }
 
           &__category {
@@ -258,7 +271,24 @@ $sub-color: #ffffff;
             margin-bottom: 16px;
 
             &__block {
-              @include block;
+              height: 20px;
+              width: 38px;
+              margin-left:15px;
+              font-size:12px;
+              background-color:#d3d3d3;
+              border-radius:5px;
+              padding: 2px 5px;
+              color:#fff;
+              display: inline-block;
+              font-style: normal;
+              line-height: 1.5em;
+              margin: 0;
+              margin-left: 8px;
+              font-weight: 600;
+              @include font;
+              color: $sub-color;
+              text-align: center;
+              
             }
           
           }
@@ -298,14 +328,14 @@ $sub-color: #ffffff;
       }
 
       &__fourth {
-        height: 430px;
+        // height: 430px; 6/11 by osawa
         background-color: $sub-color;
         margin: 0 auto;
         border: solid 1px;
         border-color: $main-color;
 
         &__content {
-          height: 370px;
+          // height: 370px; 6/11 by osawa
           vertical-align: baseline;
           margin: 33px 38px 35px 38px;
           @include border-style;
@@ -365,7 +395,7 @@ $sub-color: #ffffff;
           &__choice {
             width: 100%;
 
-            &__form {
+            #post_shipping_area_id{
               width: 670px;
               height: 48px;
               background-color: $sub-color;
@@ -478,7 +508,34 @@ $sub-color: #ffffff;
           }
         }
       }
+      
+        
+      &__update {
+        height: 50px;
+        text-align: center;
+        margin-top: 20px;
+      
 
+        &__button {
+          height: 50px;
+          width: 100%;
+          height: 100%;
+          width: 100%;
+          font-size: 18px;
+          font-weight: 600;
+          background-color: #3CCACE;
+          padding: 0 15px 0 15px;
+          color: $sub-color;
+          @include font;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #91CCCF;
+          }
+
+        }
+      }
       &__sixth {
         height: 380px;
         background-color: $sub-color;
@@ -509,7 +566,9 @@ $sub-color: #ffffff;
               height: 50px;
               width: 100%;
 
+
               button {
+                border:none;
                 height: 100%;
                 width: 100%;
                 font-size: 18px;
@@ -533,6 +592,7 @@ $sub-color: #ffffff;
               margin-top: 24px;
 
               button {
+                border:none;
                 height: 100%;
                 width: 100%;
                 font-size: 18px;
@@ -644,5 +704,32 @@ $sub-color: #ffffff;
     img{
       width: 100%;
       height: 150px
+    }
+}
+
+//追加 カテゴリー 6/6 osawa
+
+.listing-select-wrapper__box{
+  .listing-select-wrapper__box--select{
+    width: 100%;
+    height: 48px;
+  }
+  .fa-chevron-down{
+    justify-content: center;
+    display: flex;
+  }
+}
+.new__main__post__top__third__content__details{
+  display: flex;
+    height: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.5em;
+    margin-top: 25px;
+    margin-bottom: 16px;
+    color: black!important;
+
+    span{
+      @include block;
     }
 }
