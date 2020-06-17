@@ -1,0 +1,16 @@
+.buy
+  %header.header-logo
+    = render partial: 'part_template/header'
+  .buy-main
+    .buy-credit-form
+      .buy-container
+        %h2.buy-container__title 支払い方法    
+        .single-container
+          .rgs-main__section
+            = form_with url:buy_credit_index_path, method: :post, html: { name: "inputForm" },class:"form" do |f|
+              = render "credits/form", f: f
+              .btn
+                = f.submit '次へ進む', class: 'btn-default', id: "charge-form"
+
+  %footer
+    = render partial: 'part_template/footer'

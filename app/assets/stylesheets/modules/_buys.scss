@@ -83,6 +83,24 @@
       }
     }
   }
+  .buy-content__payment {
+    width: 100%;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      .creditcard-info__delete{
+        display: block;
+        float: right;
+        margin-top: 20px;
+        padding: 2px 8px;
+        font-size: 12px;
+        color: #ff0000;
+        border: solid 1px #ff0000;
+        border-radius: 3px;
+        background-color: white;
+      }
+    }
+  }
 }
 
 .buy-content__info__btn:hover {
