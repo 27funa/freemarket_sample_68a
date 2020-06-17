@@ -1,4 +1,4 @@
-class CreditsController < ApplicationController
+class BuyCreditController < ApplicationController
   require "payjp"
   before_action :set_card
 
@@ -26,7 +26,7 @@ class CreditsController < ApplicationController
       when "JCB"
         @card_image = "jcb.svg"
       when "MasterCard"
-        @card_image = "mc_vrt_pos.svg"
+        @card_image = "master-card.svg"
       when "American Express"
         @card_image = "american_express.svg"
       when "Diners Club"
@@ -63,7 +63,7 @@ class CreditsController < ApplicationController
       # PAY.JPのユーザーが作成できたので、creditcardモデルを登録します。
       @card = Credit.new(user_id: current_user.id, payjp_id: customer.id)
       if @card.save
-        redirect_to action: "index", notice:"支払い情報の登録が完了しました"
+        redirect_to controller: 'buys', action: 'index', notice:"支払い情報の登録が完了しました"
       else
         render 'new'
       end

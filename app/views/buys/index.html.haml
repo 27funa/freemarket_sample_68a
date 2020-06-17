@@ -21,7 +21,7 @@
             %h2 &#165;30000
         .buy-content__payment
           %h2  支払い方法
-          - if @card.present?
+          - if @userCard.present?
             .container
               .creditcard-info
                 = image_tag "creditcards/#{@card_image}", height:'50', alt:'card-logo'
@@ -29,10 +29,10 @@
                   = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
                 %p.creditcard-info__period 
                 = @exp_month + " / " + @exp_year
-              = button_to "削除する", credit_path(@card), method: :delete, class:"creditcard-info__delete"
+              = button_to "削除する", buys_index_path(@userCard), method: :delete, class:"creditcard-info__delete"
           - else
             .new-card
-              = link_to new_credit_path do
+              = link_to new_buy_credit_path do
                 %p
                   %i.fas.fa-cog.fa-spin
                   登録してください

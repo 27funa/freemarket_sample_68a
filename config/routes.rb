@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # post "posts/:id/destroy" => "posts#destroy"
   
 
+
+  resources :buys, only: [:index, :destroy]
+  
   resources :posts do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -28,6 +31,8 @@ Rails.application.routes.draw do
   resources :delivery_informations
   resources :osawas, only: :index
   resources :credits, except: [:show, :edit, :update]
+  resources :buy_credit, except: [:show, :edit, :update]
+
   resources :categories, only: [:index, :new,] do
     member do
       get 'parent'
