@@ -74,29 +74,8 @@
         %a{href:"#"} 
           %h3.mainPickup__productBox__productHead__title 新規投稿商品
       .mainPickup__productBox__productLists
-        - @posts.each do |post|
-          = link_to post do
-            %figure.mainPickup__productBox__productLists__list__list--img
-              -if post.sales_status.present? 
-                = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
-              -else
-                .mainPickup__productBox__productLists__list__list--img__sold
-                  .mainPickup__productBox__productLists__list__list--img__sold__inner 
-                    SOLD  
-                = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name
-                = post.item_name
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 
-                    = post.price
-                    円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
- 
-          
+        = render "item-box"
+
   %section.mainPickup
     %h2.mainPickup__head ピックアップブランド
     .mainPickup__productBox
@@ -104,24 +83,4 @@
         %a{href:"#"} 
           %h3.mainPickup__productBox__productHead__title アーカイバ
       .mainPickup__productBox__productLists
-        - @posts.each do |post|
-          = link_to post do
-            %figure.mainPickup__productBox__productLists__list__list--img
-              -if post.sales_status.present? 
-                = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
-              -else
-                .mainPickup__productBox__productLists__list__list--img__sold
-                  .mainPickup__productBox__productLists__list__list--img__sold__inner 
-                    SOLD  
-                = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
-            .mainPickup__productBox__productLists__list__body
-              %h3.mainPickup__productBox__productLists__list__body__name
-                = post.item_name
-              .mainPickup__productBox__productLists__list__body__details
-                %ul
-                  %li 
-                    = post.price
-                    円
-                  %li
-                    %i.fa.fa-star.likeIcon 0
-                %p (税込)
+        = render "item-box"
