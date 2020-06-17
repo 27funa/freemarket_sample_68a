@@ -40,7 +40,8 @@ class BuyCreditController < ApplicationController
   def new
     # cardがすでに登録済みの場合、indexのページに戻します。
     @card = Credit.where(user_id: current_user.id).first
-    redirect_to action: "index" if @card.present?    
+    @post = Post.find_by(params[:post_id])
+    redirect_to post_buys_path(@post) if @card.present?
   end
 
   def create
@@ -62,8 +63,9 @@ class BuyCreditController < ApplicationController
 
       # PAY.JPのユーザーが作成できたので、creditcardモデルを登録します。
       @card = Credit.new(user_id: current_user.id, payjp_id: customer.id)
+      @post = Post.find_by(params[:post_id])
       if @card.save
-        redirect_to controller: 'buys', action: 'index', notice:"支払い情報の登録が完了しました"
+        redirect_to post_buys_path(@post) , notice:"支払い情報の登録が完了しました"
       else
         render 'new'
       end

@@ -5,16 +5,16 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
 
-  get 'buys/index'
-  get 'logouts/index'
+  # get 'buys/index'
+  # get 'logouts/index'
   root 'posts#index'
   # post "posts/:id/destroy" => "posts#destroy"
   
 
 
-  resources :buys, only: [:index, :destroy]
   
   resources :posts do
+    resources :buys, only: [:index, :destroy]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
