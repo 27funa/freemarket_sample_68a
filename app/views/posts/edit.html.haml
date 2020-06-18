@@ -8,6 +8,7 @@
         %ul
           - @post.errors.full_messages.each do |message|
             %li= message
+    = f.text_field :image_taken ,id:"image_taken"
     .new__main__post
       .new__main__post__top
         .new__main__post__top__content
@@ -16,14 +17,40 @@
             .new__main__post__top__content__upper__block
               必須
           .new__main__post__top__content__text
-            最大10枚までアップロードできます
+            最大3枚までアップロードできます
           .new__main__post__top__content__upload
             .new__main__post__top__content__upload__camera
-              = f.fields_for :images do |c|
-                = c.label :image, class: "new__main__post__top__content__upload__camera__label" do
-                  = icon("fas fa-camera", class: `icon`)
-                  = c.file_field :image,:multiple => true,name: "images[image][]",class: "new__main__post__top__content__upload__camera__file",maxlength:"1"
+              = f.label :image, class: "new__main__post__top__content__upload__camera__label1",for:"123img_edit" do
+                = icon("fas fa-camera", class: `icon`)
+                = f.file_field :image,:multiple => true,name: "images[image][]",class: "new__main__post__top__content__upload__camera__file error_select",id:"123img_edit"
+             
+                
+
+                -# = c.file_field :image,class: "new__main__post__top__content__upload__camera__file"
+                -# = c.file_field :image,class: "new__main__post__top__content__upload__camera__file"
+
+                -# %input{class:"hidden-field", type: "file", name: "post[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+                -# %input{class:"hidden-field", type: "file", name: "post[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+                -# %input{class:"hidden-field", type: "file", name: "post[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+                -# = f.hidden_field :image_cache
+
             #preview
+            .grid__top-img
+              = f.fields_for :images do |c|
+                = render 'edit_field', f: c 
+                -# = c.label :image, class: "new__main__post__top__content__upload__camera__label" do
+                -#   -# = icon("fas fa-camera", class: `icon`)
+                -#   編集
+                -#   = c.file_field :image,class: "new__main__post__top__content__upload__camera__file"
+                 
+                -# 削除
+            .grid__top-img
+              - @img123.each_with_index do |abc,i|
+                .123abcde  
+                  %img{id:"topimage#{i}",src:"#{abc.image.url}"}
+                -# %img{id:"topimage1",src:"#{@img123.second.image.url}"}
+                -# %img{id:"topimage2",src:"#{@img123.third.image.url}"}
+
             
         
       .new__main__post__top__second 
