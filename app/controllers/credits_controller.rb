@@ -63,8 +63,10 @@ class CreditsController < ApplicationController
       # PAY.JPのユーザーが作成できたので、creditcardモデルを登録します。
       @card = Credit.new(user_id: current_user.id, payjp_id: customer.id)
       if @card.save
-        redirect_to action: "index", notice:"支払い情報の登録が完了しました"
+        flash[:notice] = "カード登録が完了しました。"
+        redirect_to action: "index"
       else
+        flash.now[:alert] = "カード情報が正しくありません。"
         render 'new'
       end
     end
@@ -78,9 +80,11 @@ class CreditsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.payjp_id)
     customer.delete # PAY.JPの顧客情報を削除
     if @card.destroy # App上でもクレジットカードを削除
-      redirect_to action: "index", notice: "削除しました"
+      flash[:notice] = "カード情報を削除しました。"
+      redirect_to action: "index"
     else
-      redirect_to action: "index", alert: "削除できませんでした"
+      flash.now[:alert] = "カード情報を削除できませんでした。"
+      redirect_to action: "index"
     end
   end
 

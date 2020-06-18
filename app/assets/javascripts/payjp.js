@@ -20,12 +20,15 @@ $(document).on('turbolinks:load',function(){
 
     // PAYJPに登録するためのトークン作成
     Payjp.createToken(card, function(status, response) {
+      let notification = $('.notifications');
+
       if (response.error){
         // エラーがある場合処理しない。
         form.find('.payment-errors').text(response.error.message);
         form.find('button').prop('disabled', false);
         alert('カード情報が正しくありません。');
         location.reload();
+        notification.append('<div class="alert">カード情報が正しくありません。</div>');
       }   
       else {
         // エラーなく問題なく進めた場合
@@ -37,8 +40,8 @@ $(document).on('turbolinks:load',function(){
         var token = response.id;
         form.append($('<input type="hidden" name="payjpToken" />').val(token));
         form.get(0).submit();
-        alert('カード登録が完了しました。');
       };
+
     });
   });
 });

@@ -4,21 +4,25 @@
   .buy-main
     .buy-container
       %h2.buy-container__title 購入内容の確認
-
       .buy-item
         .buy-item__image
-          = image_tag 'sushi_aburi_toro.png', class: 'img'
+          = image_tag @post.images.first.image.to_s, class: 'img'
         .buy-item__details
           .buy-item__details__title
-            %p product3
+            %p
+            = @post.item_name
           .buy-item__details__price
-            %p &yen;30000 (税込) 送料込み
-
+            %p
+            &yen;
+            = @post.price
+            (税込) 送料込み
       .buy-content
         .buy-content__price
           .buy-content__price__amount
             %h2 支払い金額
-            %h2 &#165;30000
+            %h2
+            &#165
+            = @post.price
         .buy-content__payment
           %h2  支払い方法
           - if @userCard.present?

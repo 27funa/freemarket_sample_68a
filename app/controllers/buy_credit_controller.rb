@@ -65,24 +65,13 @@ class BuyCreditController < ApplicationController
       @card = Credit.new(user_id: current_user.id, payjp_id: customer.id)
       @post = Post.find_by(params[:post_id])
       if @card.save
+        flash.notice = "カード登録が完了しました。"
         redirect_to post_buys_path(@post)
       else
-        redirect_to action: "new"
+        flash.now.alert = "カード情報が正しくありません。"
+        redirect_to post_buys_path(@post)
+        # render 'new'
       end
-    end
-  end
-
-  def destroy
-    # 今回はクレジットカードを削除するだけでなく、PAY.JPの顧客情報も削除する。これによりcreateメソッドが複雑にならない。
-    # PAY.JPの秘密鍵をセットして、PAY.JPから情報をする。
-    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
-    # PAY.JPの顧客情報を取得
-    customer = Payjp::Customer.retrieve(@card.payjp_id)
-    customer.delete # PAY.JPの顧客情報を削除
-    if @card.destroy # App上でもクレジットカードを削除
-      redirect_to action: "index", notice: "削除しました"
-    else
-      redirect_to action: "index", alert: "削除できませんでした"
     end
   end
 
