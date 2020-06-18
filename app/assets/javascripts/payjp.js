@@ -24,6 +24,8 @@ $(document).on('turbolinks:load',function(){
         // エラーがある場合処理しない。
         form.find('.payment-errors').text(response.error.message);
         form.find('button').prop('disabled', false);
+        alert('カード情報が正しくありません。');
+        location.reload();
       }   
       else {
         // エラーなく問題なく進めた場合
@@ -35,6 +37,7 @@ $(document).on('turbolinks:load',function(){
         var token = response.id;
         form.append($('<input type="hidden" name="payjpToken" />').val(token));
         form.get(0).submit();
+        alert('カード登録が完了しました。');
       };
     });
   });
