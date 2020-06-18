@@ -65,9 +65,9 @@ class BuyCreditController < ApplicationController
       @card = Credit.new(user_id: current_user.id, payjp_id: customer.id)
       @post = Post.find_by(params[:post_id])
       if @card.save
-        redirect_to post_buys_path(@post) , notice:"支払い情報の登録が完了しました"
+        redirect_to post_buys_path(@post)
       else
-        render 'new'
+        redirect_to action: "new"
       end
     end
   end

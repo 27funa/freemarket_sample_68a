@@ -40,8 +40,9 @@
               .user_buy_button
                 購入できません。
             - else
-              = link_to "#{@post.id}/buys", post_id: @post.id do
-                購入画面に進む
+              .user_buy_button
+                = link_to "#{@post.id}/buys", post_id: @post.id do
+                  購入画面に進む
           - else
             .user_buy_button
               = button_to new_user_session_path do
