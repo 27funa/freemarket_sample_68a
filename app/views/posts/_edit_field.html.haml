@@ -1,0 +1,10 @@
+.123abcdd  
+  = f.label :image, class: "new__main__post__top__content__upload__camera__label" do
+    編集
+    = f.file_field :image,class: "new__main__post__top__content__upload__camera__file"
+
+  -# = link_to_remove_association "削除", f
+  = f.label '削除' do
+  
+    削除
+    = f.check_box :_destroy,class:"destroy_img_btm"
