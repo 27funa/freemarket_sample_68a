@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function() { 
     });
     
     $(function(){
-    $('a[href^="#"]').click(function() {
+    $('.category__container--top a[href^="#"]').click(function() {
       var speed = 400;
       var href = $(this).attr("href");
       var target = $(href == "#" || href == "" ? 'html' : href);
