@@ -2,7 +2,7 @@ class BuysController < ApplicationController
   def index
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
-    @post = Post.find_by(params[:id])
+    @post = Post.find_by(params[:post_id])
     @deri_infos = DeliveryInformation.all
     if @userCard.present?
       # 登録している場合,PAY.JPからカード情報を取得する
@@ -47,9 +47,11 @@ class BuysController < ApplicationController
     customer = Payjp::Customer.retrieve(@userCard.payjp_id)
     customer.delete # PAY.JPの顧客情報を削除
     if @userCard.destroy # App上でもクレジットカードを削除
-      redirect_to action: "index", notice: "削除しました"
+      flash[:notice] = "カード情報を削除しました。"
+      redirect_to action: "index"
     else
-      redirect_to action: "index", alert: "削除できませんでした"
+      flash.now[:alert] = "カード情報を削除できませんでした。"
+      redirect_to action: "index"
     end
   end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   # get 'buys/index'
-  # get 'logouts/index'
+  get 'logouts/index'
   root 'posts#index'
   # post "posts/:id/destroy" => "posts#destroy"
   
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :delivery_informations
   resources :osawas, only: :index
   resources :credits, except: [:show, :edit, :update]
-  resources :buy_credit, except: [:show, :edit, :update]
+  resources :buy_credit, except: [:destroy, :show, :edit, :update]
 
   resources :categories, only: [:index, :new,] do
     member do
