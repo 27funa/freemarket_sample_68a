@@ -1,4 +1,4 @@
-class CreditsController < ApplicationController
+class BuyCreditController < ApplicationController
   require "payjp"
   before_action :set_card
 
@@ -26,7 +26,7 @@ class CreditsController < ApplicationController
       when "JCB"
         @card_image = "jcb.svg"
       when "MasterCard"
-        @card_image = "mc_vrt_pos.svg"
+        @card_image = "master-card.svg"
       when "American Express"
         @card_image = "american_express.svg"
       when "Diners Club"
@@ -40,7 +40,8 @@ class CreditsController < ApplicationController
   def new
     # cardがすでに登録済みの場合、indexのページに戻します。
     @card = Credit.where(user_id: current_user.id).first
-    redirect_to action: "index" if @card.present?    
+    @post = Post.find_by(params[:post_id])
+    redirect_to post_buys_path(@post) if @card.present?
   end
 
   def create
@@ -62,10 +63,11 @@ class CreditsController < ApplicationController
 
       # PAY.JPのユーザーが作成できたので、creditcardモデルを登録します。
       @card = Credit.new(user_id: current_user.id, payjp_id: customer.id)
+      @post = Post.find_by(params[:post_id])
       if @card.save
-        redirect_to action: "index", notice:"支払い情報の登録が完了しました"
+        redirect_to post_buys_path(@post)
       else
-        render 'new'
+        redirect_to action: "new"
       end
     end
   end
