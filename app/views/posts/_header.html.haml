@@ -33,4 +33,4 @@
           %li
             - if user_signed_in?
               = link_to profiles_path do
-                マイページ
+                %p マイページ / #{current_user.nickname}
