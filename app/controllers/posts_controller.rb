@@ -22,17 +22,13 @@ class PostsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
- end
+  end
 
  # 子カテゴリーが選択された後に動くアクション
  def get_category_grandchildren
 #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
  end
-
-  
-
-
 
   def create
     @post = Post.new(post_params)
@@ -41,7 +37,7 @@ class PostsController < ApplicationController
       params[:images]['image'].first(3).each do |img|
         @images = @post.images.create(image: img, post_id: @post.id)
       end
-      redirect_to posts_url
+      redirect_to @post
     else
       # redirect_to new_post_path
       @images = @post.images.build
@@ -59,9 +55,6 @@ class PostsController < ApplicationController
 
   def show
     @images = @post.images
-
- 
-
   end
 
   def destroy
@@ -101,7 +94,6 @@ class PostsController < ApplicationController
       render 'edit'
     end
   end
-
 
 
   private

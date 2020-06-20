@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() { 
+$(document).on('turbolinks:load', function() {
 
   $('.error_select').on('change', function(){
     var index = $('.error_select').index(this);

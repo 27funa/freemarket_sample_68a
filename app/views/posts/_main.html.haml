@@ -107,7 +107,7 @@
         - @posts.each do |post|
           = link_to post do
             %figure.mainPickup__productBox__productLists__list__list--img
-              -if post.sales_status.present? 
+              -if post.sales_status.present?
                 = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img' , height: '150', width: '220'
               -else
                 .mainPickup__productBox__productLists__list__list--img__sold

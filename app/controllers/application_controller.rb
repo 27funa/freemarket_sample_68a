@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :yamada_ancestry
   protect_from_forgery with: :exception
-  
 
   private
 

@@ -1,4 +1,3 @@
--# = render "form"
 .new__main
   = render "part_template/header"
   = form_with model:@post ,local:true,class:"new_post"  do |f|
@@ -16,7 +15,7 @@
             .new__main__post__top__content__upper__block
               必須
           .new__main__post__top__content__text
-            最大10枚までアップロードできます
+            最大3枚までアップロードできます
           .new__main__post__top__content__upload
             .new__main__post__top__content__upload__camera
               = f.fields_for :images do |c|
@@ -58,13 +57,11 @@
               .listing-select-wrapper__added#children_wrapper
                 .listing-select-wrapper__box
 
-                  -# = f.collection_select :category, @post.category.parent.siblings, :id, :name, { include_blank: true, selected: @post.category.parent.id }, { class: 'isting-select-wrapper__box--select', id: 'child_category' }
                   = f.collection_select :category, @post.category.parent.siblings, :id, :name, { include_blank: true, selected: @post.category.parent.id  }, { class: 'listing-select-wrapper__box--select', id: 'child_category' }
                   %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
               .listing-select-wrapper__added#grandchildren_wrapper
                 .listing-select-wrapper__box
-                  = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---" }, { class: 'listing-select-wrapper__box--select', name:'category_id', id:'grandchild_category ' }
-                  -# = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: true, selected: @post.category.id }, { class: 'isting-select-wrapper__box--select__select', name:'category_id', id:'grandchild_category ' }
+                  = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---" }, { class: 'listing-select-wrapper__box--select', name:'category_id', id:'grandchild_category' }
 
           -# .new__main__post__top__third__content__category
           -#   カテゴリー
