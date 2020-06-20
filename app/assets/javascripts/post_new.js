@@ -7,7 +7,8 @@
 $(document).on('turbolinks:load', function() { 
 
 
-
+  $("#image_taken").val("in");
+  
   $('.error_select').on('change', function(){
     var index = $('.error_select').index(this);
     $(".error_select_box").eq(index).find(".laramins").css("display","none")
