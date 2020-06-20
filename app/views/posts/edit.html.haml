@@ -1,12 +1,13 @@
 .new__main
   = render "part_template/header"
   = form_with model:@post ,local:true,class:"new_post"  do |f|
-    - if @post.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-        %ul
-          - @post.errors.full_messages.each do |message|
-            %li= message
+    -# - if @post.errors.any?
+    -#   #error_explanation
+    -#     %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+    -#     %ul
+    -#       - @post.errors.full_messages.each do |message|
+    -#         %li= message
+    = f.text_field :image_taken ,id:"image_taken"
     .new__main__post
       .new__main__post__top
         .new__main__post__top__content
@@ -18,11 +19,40 @@
             最大3枚までアップロードできます
           .new__main__post__top__content__upload
             .new__main__post__top__content__upload__camera
-              = f.fields_for :images do |c|
-                = c.label :image, class: "new__main__post__top__content__upload__camera__label" do
-                  = icon("fas fa-camera", class: `icon`)
-                  = c.file_field :image,:multiple => true,name: "images[image][]",class: "new__main__post__top__content__upload__camera__file",maxlength:"1"
+              = f.label :image, class: "new__main__post__top__content__upload__camera__label1",for:"123img_edit" do
+                = icon("fas fa-camera", class: `icon`)
+                = f.file_field :image,:multiple => true,name: "images[image][]",class: "new__main__post__top__content__upload__camera__file error_select",id:"123img_edit"
+          .error_select_box  
+            - if @post.errors.include?(:image_taken)
+              %p.laramins#image_taken{style:"color: red;"}
+                = @post.errors[:image_taken].first
+                
+
+                -# = c.file_field :image,class: "new__main__post__top__content__upload__camera__file"
+                -# = c.file_field :image,class: "new__main__post__top__content__upload__camera__file"
+
+                -# %input{class:"hidden-field", type: "file", name: "post[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+                -# %input{class:"hidden-field", type: "file", name: "post[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+                -# %input{class:"hidden-field", type: "file", name: "post[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+                -# = f.hidden_field :image_cache
+
             #preview
+            .grid__top-img
+              = f.fields_for :images do |c|
+                = render 'edit_field', f: c 
+                -# = c.label :image, class: "new__main__post__top__content__upload__camera__label" do
+                -#   -# = icon("fas fa-camera", class: `icon`)
+                -#   編集
+                -#   = c.file_field :image,class: "new__main__post__top__content__upload__camera__file"
+                 
+                -# 削除
+            .grid__top-img
+              - @img123.each_with_index do |abc,i|
+                .123abcde  
+                  %img{id:"topimage#{i}",src:"#{abc.image.url}"}
+                -# %img{id:"topimage1",src:"#{@img123.second.image.url}"}
+                -# %img{id:"topimage2",src:"#{@img123.third.image.url}"}
+
             
         
       .new__main__post__top__second 
@@ -34,6 +64,10 @@
           .new__main__post__top__second__content__input-box
           
             = f.text_field :item_name, {class: `new__main__post__top__second__content__input-box`, placeholder: '40文字まで'}
+          .error_select_box  
+            - if @post.errors.include?(:item_name)
+              %p.laramins#item_name{style:"color: red;"}
+                = @post.errors[:item_name].first
           .new__main__post__top__second__content__text
             商品の説明
             .new__main__post__top__second__content__text__block
@@ -41,6 +75,10 @@
           .new__main__post__top__second__content__area   
           
             = f.text_area :description, {class: `new__main__post__top__second__content__box__area`, placeholder: ' 商品の説明　(必須 1000字以内)&#13;&#10(色、素材、重さ、定価、注意点など)&#13;&#10&#13;&#10;例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。&#13;&#10あわせやすいのでおすすめです'.html_safe}
+          .error_select_box  
+            - if @post.errors.include?(:description)
+              %p.laramins#description{style:"color: red;"}
+                = @post.errors[:description].first
       .new__main__post__top__third
         .new__main__post__top__third__content
           .new__main__post__top__third__content__details
@@ -62,6 +100,12 @@
               .listing-select-wrapper__added#grandchildren_wrapper
                 .listing-select-wrapper__box
                   = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---" }, { class: 'listing-select-wrapper__box--select', name:'category_id', id:'grandchild_category' }
+            .error_select_box
+              - if @post.errors.include?(:category)
+                %p.laramins#category{style:"color: red;"}
+                  = @post.errors[:category].first
+                  -# = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: true, selected: @post.category.id }, { class: 'isting-select-wrapper__box--select__select', name:'category_id', id:'grandchild_category ' }
+
 
           -# .new__main__post__top__third__content__category
           -#   カテゴリー
@@ -95,6 +139,10 @@
           .new__main__post__top__third__content__choice
             
             = f.select :condition, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし","目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"],], {:include_blank => "選択してください"}, {class: "new__main__post__top__third__content__choice__form"}
+          .error_select_box  
+            - if @post.errors.include?(:condition)
+              %p.laramins#condition{style:"color: red;"}
+                = @post.errors[:condition].first
       .new__main__post__top__fourth
         .new__main__post__top__fourth__content
           .new__main__post__top__fourth__content__text
@@ -111,6 +159,10 @@
           .new__main__post__top__fourth__content__select
             
             = f.select :postage_payment, [["送料込み（出品者負担）", "送料込み（出品者負担）"],["着払い（購入者負担）", "着払い（購入者負担）"],], {:include_blank => "選択してください"}, {class: "new__main__post__top__third__content__choice__form"}
+          .error_select_box  
+            - if @post.errors.include?(:postage_payment)
+              %p.laramins#postage_payment{style:"color: red;"}
+                = @post.errors[:postage_payment].first
           .new__main__post__top__fourth__content__shipping-origin
             発送元の地域
             .new__main__post__top__fourth__content__shipping-origin__block
@@ -126,6 +178,10 @@
           .new__main__post__top__fourth__content__selection
       
             = f.select :arrival_days, [["1~2日で発送", "1~2日で発送"],["2~3日で発送", "2~3日で発送"],["4~7日で発送", "4~7日で発送"],], {:include_blank => "選択してください"}, {class: "new__main__post__top__fourth__content__selection__form"} 
+          .error_select_box  
+            - if @post.errors.include?(:arrival_days)
+              %p.laramins#arrival_days{style:"color: red;"}
+                = @post.errors[:arrival_days].first
       .new__main__post__top__fifth
         .new__main__post__top__fifth__content
           .new__main__post__top__fifth__content__text
@@ -142,6 +198,9 @@
             .new__main__post__top__fifth__content__price__input-box
               
               = f.text_field :price, {class: `new__main__post__top__fifth__content__price__input-box`, placeholder: '0'}
+            - if @post.errors.include?(:price)
+              %p.laramins#price{style: "color: red;"}
+                = @post.errors[:price]
           .new__main__post__top__fifth__content__fee
             販売手数料 (10%)
 

@@ -7,7 +7,10 @@
       支払い方法
     .single-container
       .rgs-main__section
-        = render "form"
+        = form_with url:credits_path, method: :post, html: { name: "inputForm" },class:"form" do |f|
+          = render "form", f: f
+          .form__upper__group
+          = f.submit '次へ進む', class: 'btn-default', id: "charge-form"
       -# .payment-explain
       -#   = icon("fas", "chevron-right", class:"arrows") 
       -#   = link_to '支払い方法について', '#'

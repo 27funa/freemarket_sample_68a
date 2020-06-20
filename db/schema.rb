@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2020_06_13_135141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
     t.index ["name"], name: "index_categories_on_name"
   end
 
@@ -35,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_135141) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.integer "postal_code", null: false
-    t.integer "state_id", null: false
+    t.string "state", null: false
     t.string "city", null: false
     t.string "address_line_1", null: false
     t.string "address_line_2"
@@ -68,8 +67,8 @@ ActiveRecord::Schema.define(version: 2020_06_13_135141) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_taken"
     t.bigint "category_id"
+    t.string "image_taken"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -90,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_135141) do
     t.string "first_name_kana", null: false
     t.date "birth", null: false
     t.integer "postal_code", null: false
-    t.integer "state_id", null: false
+    t.string "state", null: false
     t.string "city", null: false
     t.string "address_line_1", null: false
     t.string "address_line_2"
