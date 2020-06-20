@@ -24,15 +24,15 @@ class BuyCreditController < ApplicationController
       when "Visa"
         @card_image = "visa.svg"
       when "JCB"
-        @card_image = "jcb.svg"
+        @card_image = "jcb-emblem-logo.svg"
       when "MasterCard"
-        @card_image = "master-card.svg"
+        @card_image = "mc_vrt_pos.svg"
       when "American Express"
         @card_image = "american_express.svg"
       when "Diners Club"
-        @card_image = "dinersclub.svg"
+        @card_image = "diners-club-international.svg"
       when "Discover"
-        @card_image = "discover.svg"
+        @card_image = "Discover-Card.svg"
       end
     end
   end
@@ -40,7 +40,7 @@ class BuyCreditController < ApplicationController
   def new
     # cardがすでに登録済みの場合、indexのページに戻します。
     @card = Credit.where(user_id: current_user.id).first
-    @post = Post.find_by(params[:post_id])
+    @post = Post.find(params[:post_id])
     redirect_to post_buys_path(@post) if @card.present?
   end
 
@@ -63,43 +63,12 @@ class BuyCreditController < ApplicationController
 
       # PAY.JPのユーザーが作成できたので、creditcardモデルを登録します。
       @card = Credit.new(user_id: current_user.id, payjp_id: customer.id)
-      @post = Post.find_by(params[:post_id])
+      @post = Post.find(params[:post_id])
       if @card.save
         flash.notice = "カード登録が完了しました。"
         redirect_to post_buys_path(@post)
       else
         flash.now.alert = "カード情報が正しくありません。"
-        redirect_to post_buys_path(@post)
-        # render 'new'
-      end
-    end
-  end
-
-  def buy
-    @product = Product.find(params[:product_id])
-    # すでに購入されていないか？
-    if @product.buyer.present? 
-      redirect_back(fallback_location: root_path) 
-    elsif @card.blank?
-      # カード情報がなければ、買えないから戻す
-      redirect_to action: "new"
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
-    else
-      # 購入者もいないし、クレジットカードもあるし、決済処理に移行
-      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
-      # 請求を発行
-      Payjp::Charge.create(
-      amount: @product.price,
-      customer: @card.customer_id,
-      currency: 'jpy',
-      )
-      # 売り切れなので、productの情報をアップデートして売り切れにします。
-      if @product.update(buyer_id: current_user.id)
-        flash[:notice] = '購入しました。'
-        redirect_to controller: 'products', action: 'show', id: @product.id
-      else
-        flash[:alert] = '購入に失敗しました。'
-        redirect_to controller: 'products', action: 'show', id: @product.id
       end
     end
   end

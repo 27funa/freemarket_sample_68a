@@ -6,8 +6,9 @@ class BuysController < ApplicationController
 
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
-    @post = Post.find_by(params[:post_id])
+    @post = Post.find(params[:post_id])
     @deri_infos = DeliveryInformation.all
+
     if @userCard.present?
       # 登録している場合,PAY.JPからカード情報を取得する
       # PAY.JPの秘密鍵をセットする。
@@ -42,6 +43,7 @@ class BuysController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
     # 今回はクレジットカードを削除するだけでなく、PAY.JPの顧客情報も削除する。これによりcreateメソッドが複雑にならない。
@@ -52,10 +54,39 @@ class BuysController < ApplicationController
     customer.delete # PAY.JPの顧客情報を削除
     if @userCard.destroy # App上でもクレジットカードを削除
       flash[:notice] = "カード情報を削除しました。"
-      redirect_to action: "index"
+      redirect_to post_buys_path(@post)
     else
       flash.now[:alert] = "カード情報を削除できませんでした。"
-      redirect_to action: "index"
+      redirect_to post_buys_path(@post)
     end
   end
+
+  def buy
+    userCard = Credit.includes(:user)
+    @userCard = userCard.find_by(user_id: current_user.id)
+    @post = Post.find(params[:post_id])
+    if @userCard.blank?
+      # カード情報がなければ買えない
+      redirect_to post_buys_path(@post)
+      flash[:alert] = '購入にはクレジットカード登録が必要です。'
+    else
+    # クレジットカード情報あり、決済処理に移行
+      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+      # 請求を発行
+      Payjp::Charge.create( 
+      amount: @post.price,
+      customer: @userCard.payjp_id,
+      currency: 'jpy',
+      )
+      # 売り切れなので、postの情報をアップデートして売り切れにする
+      if @post.update(sales_status: 0)
+        flash[:notice] = '購入しました。'
+        redirect_to root_path
+      else
+        flash[:alert] = '購入に失敗しました。'
+        redirect_to root_path
+      end
+    end
+  end
+
 end

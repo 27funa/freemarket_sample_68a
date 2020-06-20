@@ -35,10 +35,10 @@
                   = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
                 %p.creditcard-info__period 
                 = @exp_month + " / " + @exp_year
-              = button_to "削除する", post_buy_path(@userCard, @userCard.id), method: :delete, class:"creditcard-info__delete"
+              = link_to "削除する", post_buy_path(current_user.credit.id, post_id: @post.id), method: :delete, class:"creditcard-info__delete"
           - else
             .new-card
-              = link_to new_buy_credit_path, post_id: @post.id do
+              = link_to new_buy_credit_path(post_id: @post.id) do
                 %p
                   %i.fas.fa-cog.fa-spin
                   登録してください
@@ -94,7 +94,8 @@
                 %i.fas.fa-cog.fa-spin
                 登録してください
         .buy-content__info
-          %input.buy-content__info__btn{:type => "submit", :value => "購入する"}
-
+          = form_tag(action: :buy, method: :post) do
+            %button.buy-content__info__btn 購入する
+          
   %footer
     = render partial: 'part_template/footer'
