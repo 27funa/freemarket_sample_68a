@@ -1,10 +1,23 @@
 - @posts.each do |post|
   %a{href: post_path(post.id)}
     .post-item-box
-      %figure.post-item-box__image
-        = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img'
-        %figcaption.post-item-box__image__price
-          &yen;
-          = post.price
-      .post-item-box__name
-        = post.item_name
+      - if post.sales_status.present?
+        %figure.post-item-box__image
+          = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img'
+          %figcaption.post-item-box__image__price
+            &yen;
+            = post.price
+        .post-item-box__name
+          = post.item_name
+      - else
+        %figure.post-item-box__image
+          = image_tag post.images.first.image.to_s, alt: 'no image', class: 'img'
+          .sold_comment
+            SOLD
+          %figcaption.post-item-box__image__price
+            &yen;
+            = post.price
+        .post-item-box__name
+          = post.item_name
+
+

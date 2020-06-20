@@ -339,6 +339,16 @@
     height: 160px;
     width: 160px;
     text-align: center;
+
+    position: relative;
+    .sold_comment {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: red;
+      color: #fff;
+      padding: 5px 5px;
+    }
     .img {
       max-width: 160px;
       max-height: 160px;
@@ -361,3 +371,32 @@
   }
 }
 
+
+
+// .mainPickup__productBox__productLists__list__list--img{
+//   width: 220px;
+//   height: 150px;
+//   position: relative;
+//   overflow: hidden;
+//   margin: 0;
+//   z-index: auto;
+//   background-color: #fff;
+//   .mainPickup__productBox__productLists__list__list--img__sold{
+//     width: 0;
+//     height: 0;
+//     border-top: 60px solid #ea352d ;
+//     border-right: 60px solid transparent;
+//     border-bottom: 60px solid transparent;
+//     border-left: 60px solid #ea352d ;
+//     z-index:100;
+//     position: relative;
+//       &__inner{
+//         transform: rotate(-45deg);
+//         font-size: 25px;
+//         margin:-30px 0px 0px -55px;
+//         color: #fff;
+//         letter-spacing: 2px;
+//         font-weight: 600;
+//       }
+//     }
+// }
