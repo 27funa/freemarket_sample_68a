@@ -39,10 +39,12 @@
             - if current_user.id == @post.user.id
               .user_buy_button
                 購入できません。
-            - else
+            - elsif @post.sales_status.blank?
               .user_buy_button
-                = link_to "#{@post.id}/buys", post_id: @post.id do
-                  購入画面に進む
+                購入できません。
+            - else
+              = link_to post_buys_path(@post.id),class:"user_buy_button" do
+                購入画面に進む
           - else
             .user_buy_button
               = button_to new_user_session_path do
@@ -98,7 +100,7 @@
               %td.left
                 配送元地域
               %td.right
-                = @post.shipping_area
+                = @post.shipping_area.name
             %tr
               %td.left
                 発送日の目安
@@ -108,11 +110,11 @@
           =button_to do
             いいね！
         .sales_status
-          - if @post.sales_status = true
+          - if @post.sales_status.present?
             出品中です！
           - else 
             %span 
-              売り切れました。
+              売り切れました
 
 %section.selfExhibition
   %h2

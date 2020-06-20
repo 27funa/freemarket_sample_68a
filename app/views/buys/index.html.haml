@@ -16,6 +16,7 @@
             &yen;
             = @post.price
             (税込) 送料込み
+
       .buy-content
         .buy-content__price
           .buy-content__price__amount
@@ -23,6 +24,7 @@
             %h2
             &#165
             = @post.price
+
         .buy-content__payment
           %h2  支払い方法
           - if @userCard.present?
@@ -42,10 +44,55 @@
                   登録してください
         .buy-content__address
           %h2  配送先
-          %a{href:"#"} 
-            %p
-              %i.fas.fa-cog.fa-spin
-              登録してください
+          -if @deli_info.present?
+            - @deli_info.each do |deli_info|
+              %table
+                %tr
+                  %td.label お名前
+                  %td
+                    =deli_info.family_name
+                    =deli_info.first_name
+                    様
+                %tr
+                  %td.label フリガナ
+                  %td
+                    =deli_info.family_name_kana
+                    =deli_info.first_name_kana
+                    様
+                %tr
+                  %td.label 郵便番号
+                  %td
+                    〒
+                    =deli_info.postal_code
+                %tr
+                  %td.label 住所-1
+                  %td
+                    =deli_info.state.name
+                %tr
+                  %td.label 住所-2
+                  %td
+                    =deli_info.city
+                    =deli_info.address_line_1
+                %tr
+                  %td.label 建物名
+                  %td
+                    =deli_info.address_line_2
+                %tr
+                  %td.label お電話番号
+                  %td
+                    =deli_info.tel
+                %a
+                = link_to edit_delivery_information_path(current_user.delivery_information.id, post_id: @post.id) do
+                  %p
+                    %i.fas.fa-cog.fa-spin
+                    変更したい場合はこちらをクリック
+
+          -else
+            %a
+            = link_to new_delivery_information_path(post_id: @post.id)  do
+              %p
+                %i.fas.fa-cog.fa-spin
+                登録してください
         .buy-content__info
           %input.buy-content__info__btn{:type => "submit", :value => "購入する"}
 

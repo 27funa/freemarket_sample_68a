@@ -1,5 +1,9 @@
 class BuysController < ApplicationController
+
   def index
+    @post = Post.find(params[:post_id])
+    @deli_info = DeliveryInformation.all
+
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
     @post = Post.find_by(params[:post_id])

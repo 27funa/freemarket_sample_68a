@@ -1,11 +1,4 @@
-// window.onpageshow = function(event) {
-// 	if (event.persisted) {
-// 		 window.location.reload();
-// 	}
-// };
-
-$(document).on('turbolinks:load', function() { 
-
+$(document).on('turbolinks:load', function() {
 
   $("#image_taken").val("in");
   
