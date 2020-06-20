@@ -1,6 +1,7 @@
 class DeliveryInformationsController < ApplicationController
 
   before_action :set_delivery_information, except: :create
+  before_action :set_item, only: [:new, :create, :edit, :update]
 
   def new
     if @delivery_information.present?
@@ -12,19 +13,37 @@ class DeliveryInformationsController < ApplicationController
 
   def create
     @delivery_information = DeliveryInformation.new(delivery_information_params)
-    if @delivery_information.save
-      redirect_to profiles_path
+    if @post.present?
+      if @delivery_information.save
+        redirect_to post_buys_path(@post)
+      else
+        render "new"
+      end
     else
-      render "new"
+      if @delivery_information.save
+        redirect_to profiles_path
+      else
+        render "new"
+      end
     end
   end
 
   def edit
+    if @post.present?
+      
+    else
+      
+    end
   end
 
   def update
+ 
     if @delivery_information.update(delivery_information_params)
-      redirect_to profiles_path
+      if @post.present?
+        redirect_to post_buys_path(@post)
+      else
+        redirect_to profiles_path
+      end
     else
       render "edit"
     end
@@ -40,5 +59,10 @@ class DeliveryInformationsController < ApplicationController
     @delivery_information = DeliveryInformation.find_by(user_id: current_user.id)
   end
 
+  def set_item
+    if params[:post_id]
+    @post = Post.find(params[:post_id]) 
+    end
+  end
 
 end

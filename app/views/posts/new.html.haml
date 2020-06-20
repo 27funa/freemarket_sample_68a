@@ -68,21 +68,36 @@
             商品の詳細
 
           .listing-form-box
-            .listing-product-detail__category
-              
-                  
-              .new__main__post__top__third__content__details
+
+            -if @post.category.present?
+              .listing-product-detail__category
                 = f.label 'カテゴリー', class: 'listing-default__label'
-              
                 %span.listing-default--require 必須
-              .listing-select-wrapper
-                .listing-select-wrapper__box
-                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select error_select error_select', id: 'parent_category'}
-                  %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
-            .error_select_box
-              - if @post.errors.include?(:category)
-                %p.laramins#category{style:"color: red;"}
-                  = @post.errors[:category].first
+                .listing-select-wrapper
+                  .listing-select-wrapper__box
+                    = f.select :category, @category_parent_array, {selected:@post.category.root.name}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+                .listing-select-wrapper__added#children_wrapper
+                  .listing-select-wrapper__box
+
+                    = f.collection_select :category, @post.category.parent.siblings, :id, :name, { include_blank: true, selected: @post.category.parent.id  }, { class: 'listing-select-wrapper__box--select', id: 'child_category' }
+                    %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+                .listing-select-wrapper__added#grandchildren_wrapper
+                  .listing-select-wrapper__box
+                    = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---" }, { class: 'listing-select-wrapper__box--select', name:'category_id', id:'grandchild_category' }
+            -else
+              .listing-product-detail__category
+                .new__main__post__top__third__content__details
+                  = f.label 'カテゴリー', class: 'listing-default__label'
+                  %span.listing-default--require 必須
+                .listing-select-wrapper
+                  .listing-select-wrapper__box
+                    = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select error_select error_select', id: 'parent_category'}
+                    %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+              .error_select_box
+                - if @post.errors.include?(:category)
+                  %p.laramins#category{style:"color: red;"}
+                    = @post.errors[:category].first
 
       
           -# .new__main__post__top__third__content__category
