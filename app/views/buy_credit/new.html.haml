@@ -10,6 +10,7 @@
             = form_with url:buy_credit_index_path, method: :post, html: { name: "inputForm" },class:"form" do |f|
               = render "credits/form", f: f
               .btn
+                = hidden_field_tag(:post_id, @post.id)
                 = f.submit '次へ進む', class: 'btn-default', id: "charge-form"
 
   %footer
