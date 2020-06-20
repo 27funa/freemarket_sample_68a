@@ -101,12 +101,12 @@
                   %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
               .listing-select-wrapper__added#grandchildren_wrapper
                 .listing-select-wrapper__box
-                  = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---" }, { class: 'listing-select-wrapper__box--select', name:'category_id', id:'grandchild_category ' }
+                  = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: "---" }, { class: 'listing-select-wrapper__box--select', name:'category_id', id:'grandchild_category' }
             .error_select_box
               - if @post.errors.include?(:category)
                 %p.laramins#category{style:"color: red;"}
                   = @post.errors[:category].first
-                  -# = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: true, selected: @post.category.id }, { class: 'isting-select-wrapper__box--select__select', name:'category_id', id:'grandchild_category ' }
+                  -# = f.collection_select :category_id, @post.category.siblings, :id, :name, { include_blank: true, selected: @post.category.id }, { class: 'isting-select-wrapper__box--select__select', name:'category_id', id:'grandchild_category' }
 
           -# .new__main__post__top__third__content__category
           -#   カテゴリー
