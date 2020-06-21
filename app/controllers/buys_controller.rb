@@ -4,7 +4,8 @@ class BuysController < ApplicationController
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
     @post = Post.find(params[:post_id])
-    @deli_infos = DeliveryInformation.all
+
+    @deli_info = DeliveryInformation.find_by(user_id: current_user.id)
 
     if @userCard.present?
       # 登録している場合,PAY.JPからカード情報を取得する
@@ -62,16 +63,16 @@ class BuysController < ApplicationController
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
     @post = Post.find(params[:post_id])
-    @deli_infos = DeliveryInformation.all
-    if @userCard.blank? && @deli_infos.present?
+    @deli_info = DeliveryInformation.find_by(user_id: current_user.id)
+    if @userCard.blank? && @deli_info.present?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
       flash[:alert] = '購入にはクレジットカード登録が必要です。'
-    elsif @deli_infos.blank? && @userCard.present?
+    elsif @deli_info.blank? && @userCard.present?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
       flash[:alert] = '配送先情報を入力してください。'
-    elsif @userCard.blank? && @deli_infos.blank?
+    elsif @userCard.blank? && @deli_info.blank?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
       flash[:alert] = 'クレジットカード登録と配送先情報を入力してください。'
