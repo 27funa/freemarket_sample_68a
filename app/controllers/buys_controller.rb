@@ -1,5 +1,6 @@
 class BuysController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def index
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)

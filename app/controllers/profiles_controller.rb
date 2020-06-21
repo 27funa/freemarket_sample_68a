@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, except: :create
+  before_action :authenticate_user!
+
 
   def index
   end
