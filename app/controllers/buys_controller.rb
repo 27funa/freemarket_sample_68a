@@ -63,15 +63,15 @@ class BuysController < ApplicationController
     @userCard = userCard.find_by(user_id: current_user.id)
     @post = Post.find(params[:post_id])
     @deli_infos = DeliveryInformation.all
-    if @userCard.blank? && @deli_info.present?
+    if @userCard.blank? && @deli_infos.present?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
       flash[:alert] = '購入にはクレジットカード登録が必要です。'
-    elsif @deli_info.blank? && @userCard.present?
+    elsif @deli_infos.blank? && @userCard.present?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
       flash[:alert] = '配送先情報を入力してください。'
-    elsif @userCard.blank? && @deli_info.blank?
+    elsif @userCard.blank? && @deli_infos.blank?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
       flash[:alert] = 'クレジットカード登録と配送先情報を入力してください。'
