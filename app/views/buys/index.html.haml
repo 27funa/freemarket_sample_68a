@@ -44,8 +44,8 @@
                   登録してください
         .buy-content__address
           %h2  配送先
-          -if @deli_info.present?
-            - @deli_info.each do |deli_info|
+          -if @deli_infos.present?
+            - @deli_infos.each do |deli_info|
               %table
                 %tr
                   %td.label お名前
