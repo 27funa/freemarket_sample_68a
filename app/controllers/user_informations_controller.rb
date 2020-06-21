@@ -1,6 +1,7 @@
 class UserInformationsController < ApplicationController
 
   before_action :set_user_information, except: :create
+  before_action :authenticate_user!
 
   def new
     if @user_information.present?

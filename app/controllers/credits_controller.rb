@@ -1,7 +1,8 @@
 class CreditsController < ApplicationController
   require "payjp"
   before_action :set_card
-
+  before_action :authenticate_user!
+  
   def index
     # すでにクレジットカードが登録しているか？
     if @card.present?
