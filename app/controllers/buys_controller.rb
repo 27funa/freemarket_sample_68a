@@ -1,13 +1,10 @@
 class BuysController < ApplicationController
 
   def index
-    @post = Post.find(params[:post_id])
-    @deli_info = DeliveryInformation.all
-
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
     @post = Post.find(params[:post_id])
-    @deri_infos = DeliveryInformation.all
+    @deli_info = DeliveryInformation.all
 
     if @userCard.present?
       # 登録している場合,PAY.JPからカード情報を取得する
@@ -65,10 +62,19 @@ class BuysController < ApplicationController
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
     @post = Post.find(params[:post_id])
-    if @userCard.blank?
+    @deli_info = DeliveryInformation.all
+    if @userCard.blank? && @deli_info.present?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
       flash[:alert] = '購入にはクレジットカード登録が必要です。'
+    elsif @deli_info.blank? && @userCard.present?
+      # カード情報がなければ買えない
+      redirect_to post_buys_path(@post)
+      flash[:alert] = '配送先情報を入力してください。'
+    elsif @userCard.blank? && @deli_info.blank?
+      # カード情報がなければ買えない
+      redirect_to post_buys_path(@post)
+      flash[:alert] = 'クレジットカード登録と配送先情報を入力してください。'
     else
     # クレジットカード情報あり、決済処理に移行
       Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
