@@ -2,7 +2,6 @@ class DeliveryInformationsController < ApplicationController
 
   before_action :set_delivery_information, except: :create
   before_action :set_item, only: [:new, :create, :edit, :update]
-  before_action :authenticate_user!
 
   def new
     if @delivery_information.present?
