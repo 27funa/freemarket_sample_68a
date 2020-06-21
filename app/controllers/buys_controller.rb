@@ -62,7 +62,7 @@ class BuysController < ApplicationController
     userCard = Credit.includes(:user)
     @userCard = userCard.find_by(user_id: current_user.id)
     @post = Post.find(params[:post_id])
-    @deli_info = DeliveryInformation.all
+    @deli_infos = DeliveryInformation.all
     if @userCard.blank? && @deli_info.present?
       # カード情報がなければ買えない
       redirect_to post_buys_path(@post)
