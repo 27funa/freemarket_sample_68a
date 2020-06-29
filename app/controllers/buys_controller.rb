@@ -85,7 +85,7 @@ class BuysController < ApplicationController
       customer: @userCard.payjp_id,
       currency: 'jpy',
       )
-      # 売り切れなので、postの情報をアップデートして売り切れにする
+      # 売り切れなのでpostの情報をアップデートして売り切れにする
       if @post.update(sales_status: 0)
         flash[:notice] = '購入しました。'
         redirect_to root_path
