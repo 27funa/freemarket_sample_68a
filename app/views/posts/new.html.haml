@@ -163,7 +163,7 @@
               必須
           .new__main__post__top__fourth__content__choice
             
-            = f.collection_select :shipping_area_id, ShippingArea.all, :id, :name, {class: "new__main__post__top__fourth__content__choice__form"}
+            = f.collection_select :shipping_area_id, ShippingArea.all, :id, :name ,prompt: "---", class: "new__main__post__top__fourth__content__choice__form"
           .error_select_box  
             - if @post.errors.include?(:shipping_area)
               %p.laramins#shipping_area{style:"color: red;"}
