@@ -1,4 +1,4 @@
-- @posts.each do |post|
+- @posts.reverse_each do |post|
   %a{href: post_path(post.id)}
     .post-item-box
       - if post.sales_status.present?
